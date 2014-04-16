@@ -1,0 +1,238 @@
+::root {
+  var-main-bg-color: #B7410E;
+}
+
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #7f8c8d;
+    min-width: 430px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body{
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+#headerbar{
+	height: 100px;
+    width: 100%;
+    background-color: #2c3e50;
+    text-align: center;
+}
+
+#menu-wrapper{
+    height: 90%;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#menu{
+    display: inline;
+    list-style-type: none;
+    padding: 0;
+    vertical-align: text-top;
+}
+
+#menu li{
+    display: inline;
+    padding: 0px 30px 0px 30px;
+    height: 90%;  
+    width: 30%;
+/*    font-size: 50px;*/
+    text-align: center;
+}
+
+#menu li a{
+    display: inline-block;
+    font-family: "Open Sans";
+    text-align: center;
+    text-decoration: None;
+    transition: color 0.25s ease;
+    color: white;
+    height: 100%;
+}
+
+#menu li a:hover{
+    color: grey;
+}
+
+.icon{
+    font-size: 80px;
+}
+
+#home-icon{
+    margin: 0px -10px 0px -10px;
+}
+
+#selected_menu{
+    padding-bottom: 93px;
+    border-bottom: 2px solid white;
+}
+
+/*    background-color: #2c3e50;*/
+.content{
+    max-width:1440;
+    margin: auto;
+    text-align: center;
+    font-family: "Open Sans";
+    color: white;
+    padding: 10px 20px 10px 20px;
+    background-color: #2c3e50;
+}
+
+h1{
+    font-family: "Open Sans";
+    font-size: 10px;
+    font-weight: normal;
+/*    line-height:;*/
+    color: white;
+    letter-spacing: 5px; 
+    text-align: center;
+}
+
+h2{
+    width: 100%;
+    font-family: "ff-meta-web-pro", Verdana, sans-serif;
+    line-height: 10px;
+    font-weight: normal;
+    color: #bdc3c7; 
+    text-align: left;
+    padding: 0px;
+}
+
+h3 {
+    text-align: left;
+    color: #95a5a6; 
+    opacity: 10%;
+    font-size: 20px;
+    line-height: 0px;
+        
+}   
+
+h4 {
+    font-size: 1.2em;
+    font-family: "ff-meta-web-pro", Verdana, sans-serif;
+}
+
+p{
+    font-size: 1.4em;
+    font-family: "Verdana";
+    text-align: justify;
+    font-style: normal;
+    padding: 0px;
+}
+
+a{
+    color: inherit;
+}
+
+a:hover{
+    opacity: 0.5;
+}
+
+img.contact-icon{
+    height: 32px;
+    width: 32px;
+}
+
+
+
+
+@media screen and (max-width: 480px) {
+    .icon{
+        display: inline;
+    }
+    .text{
+        display: None;
+    }
+    h1{
+        font-size: 2rem;
+    }
+    h2{
+        font-size: 35px;
+        line-height: 30px
+    }
+    body{
+        padding-right: 0%;
+        padding-left: 0%;
+    }
+}
+@media screen and (min-width: 481px){
+    .icon{
+        display: inline;
+    }
+    .text{
+        display: None;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    h2{
+        font-size: 40px;
+        line-height: 35px
+    }
+    body{
+        padding-right: 0%;
+        padding-left: 0%;
+    }
+}
+@media screen and (min-width: 769px){
+    .icon{
+        display: block;
+
+    }
+    .text{
+/*        float: right;*/
+        display: block;
+        font-size: 20px;
+    }
+    h1{
+        font-size: 80px;
+        line-height: 80px;
+    }
+    h2{
+        font-size: 30px;
+    }
+    body{
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+}
+@media screen and (min-width: 1225px) {
+    .icon{
+        display: inline;
+    }
+    .text{
+        display: inline
+    }
+    h2{
+        font-size: 45px;
+    }
+    h1{
+        font-size: 110px;
+    }
+    body{
+        padding-right: 15%;
+        padding-left: 15%;
+    }
+}
+
+h2 span#hello {
+    display:inline;
+}
+h2:hover span#hello {
+    display:none;
+}
+h2 span#bonjour {
+    display:none;
+}
+h2:hover span#bonjour {
+    display:inline;
+}
