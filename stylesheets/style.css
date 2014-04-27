@@ -65,10 +65,7 @@ body{
 
 .icon{
     font-size: 80px;
-}
-
-#home-icon{
-    margin: 0px -10px 0px -10px;
+    color: white;
 }
 
 #selected_menu{
@@ -76,7 +73,6 @@ body{
     border-bottom: 2px solid white;
 }
 
-/*    background-color: #2c3e50;*/
 .content{
     max-width:1440;
     margin: auto;
