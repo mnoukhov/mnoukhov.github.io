@@ -1,5 +1,8 @@
-README
+# README
 
-My personal website
+## My personal website
+Written in HTML, CSS, and JS (Jquery) from scratch
 
-Written in HTML, CSS, and JS (Jquery)
+
+## Todo
+Add "blog" part with Jekyll and update UI to match
