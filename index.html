@@ -1,58 +1,83 @@
 <html>
 	<head>
 		<title> Michael Noukhovitch </title>
+		<link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
 		<link rel="stylesheet" href="./stylesheets/style.css">
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		<meta name="viewport" content="width=device-width, user-scalable=no">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script type="text/javascript" src="/javascript/script.js"></script>
+		<script type="text/javascript" src="./javascript/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="./javascript/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./javascript/script.js"></script>
+
+		<meta charset="UTF-8" name="viewport" content="width=device-width, user-scalable=no">
 	</head>
 	<body>
-		<header id="headerbar"> 
-            <span id='menu-wrapper'>
-                <ol id="menu">
-                    <li>
-                        <a href='./index.html'  id='selected_menu'>
-                            <i class="fa fa-home icon"></i>
-                            <span class="text">HOME</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='./experience.html'> 
-                            <i class="fa fa-keyboard-o icon"></i>
-                            <span class="text">EXPERIENCE</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='./about.html'> 
-                            <i class="fa fa-user icon"></i>
-                            <span class="text">ABOUT</span>
-                        </a>
-                    </li>
-                </ol>
-            </span>
-		</header>
-        <h1> HOME </h1>
-		<div class="content">
-            <h2>
-                <div id='hello'> Hello, my name is </div>
-                Michael Noukhovitch
-            </h2>
-            <p> 
-                I am a 2nd year Software Engineering student at the University of Waterloo <br> <br>
-                I just finished interning at Yelp </a> as a software engineer on <a href="biz.yelp.com">biz.yelp.com</a>!
-                My speciality is machine learning algorithms and web development. <br>
-                <br>
-                I wrote this website a while ago so I'm going to update it and make it nice with bootstrap in the near future.
-                If you want to chat, my e-mail's on the about page, at the bottom. 
-            </p>
-            
-        </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div>
+						<h1> Michael Noukhovitch </h1>
+					</div>
+					<hr class="no-bot-margin">
+					<div class="navbar navbar-default navbar-clear no-bot-margin" role="navigation">
+						<ul class="nav navbar-nav">
+							<li><a href="#about">About</a></li>
+							<li><a href="#projects">Projects</a></li>
+							<li><a href="#experience">Experience</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<h3 id="about"> About</h3>
+					<p> Hi, I'm a 3rd year Software Engineering student at the University of Waterloo in Canada. I'm current working at <a href="http://www.premise.com">Premise</a> in San Francisco, and I'm interested in learning more about Machine Learning, Data Analysis, and coffee. </p>
+					
+					<h3 id="projects"> Projects </h3>
+						
+					<h4> <a href='https://github.com/mnuke/Card'>Card</a>  <span class="small">Android</span> </h4>
+					<p> An android app for creating and sharing electronic business cards using NFC, made as a part of Calhacks 2014 </p>
+
+					<h4> Meta-Reviewer  <span class="small">Python</span> </h4>
+					<p> A machine learning classifier that reviews a Yelp user's reviews. Determines the overall quality of a user's Yelp reviews against training data of 1 million reviews, made as part of Yelp Fall 2014 Hackathon. </p>
+
+					<h4> <a href='https://www.khanacademy.org/cs/my-program/6562451917564904'> Coin Flipping Distribution Simulator </a><span class="small"> Javascript </span> </h4>
+					<p> A simple distribution simulation to demonstrate the Central Limit Theorem. Flip coins like no tomorrow!</p>
+
+					<h4> Minecraft Multi-threading Mod</a>  <span class="small">Java</span></h4>
+					<p> As part of a U of T mentorship initiative, I worked with a professor at <a href='http://www.scinethpc.ca/'>Scinet</a> to create a mod for Minecraft that used mutliple cores for rendering and improved performance by 20% 
+					</p>
+					
+					<h4> <a href="https://github.com/mnuke/JavaFighter"> 3D Fighting Game </a></a><span class="small"> Java </span> </h4>
+					<p> An object-oriented fighting game engine from scratch, made to support easily interchangable sprites and custom terrain </p>
+
+
+					<h3 id="experience"> Experience </h3>
+					<h4><a href=http://www.yelp.com/>Yelp</a>, Software Engineering Intern <span class="small"> Python Javascript </span> </h4>
+					<p> I spent a great four months in San Francisco working on <a href="http://www.biz.yelp.com"> biz.yelp.com </a><br>
+						I worked on full-stack web development using agile methodology (sounds way cooler than it is). Dove deep into the code and worked on frontend features like the new landing page and purchasing flow as well as backend where I internationalized check-in offers.  
+					</p>
+
+					<h4><a href=http://www.watrhub.com/>Watrhub </a>, Data Algorithms Dev <span class="small"> Python ElasticSearch </span> </h4>
+					<p> I worked at an awesome water data startup in downtown Toronto located at <a href='http://socialinnovation.ca/'>CSI</a> <br>
+						I got to work on our whole backend pipeline, from scraping and web crawling, to unstructured text classification, to text parsing. I delved further into classification and did some great work with PU learning as well as some interesting work integrating ElasticSearch with MongoDB for full featured text-search through pdfs <br>
+						Also <a href='http://www.pluckteas.com/'>the tea</a> was great. 
+					</p>
+						
+					<h4> Canadian Government, Data Scientist<span class="small"> Python </span> </h4>
+					<p> I worked on some cutting edge machine learning algorithms with fields such as pattern detection, classifications and I even invented my own algorithm for a specific area of classification!
+					</p>
+					
+					<h4> <a href="http://www.cysjournal.ca"> Canadian Young Scientist Journal</a>, Web Developer <span class="small"> Drupal </span> </h4>
+					<p> I acted as webmaster for this non-profit peer-reviewed scientific journal until it moved to NRC Research Press, updating the website with news and UI tweaks here and there
+					</p>
+
+					<h3 id="contact"> Contact Me </h3>
+					<p> Feel free to <a href="mailto:mnoukhovitch@outlook.com">email me</a> or maybe find me on <a href="http://github.com/mnuke">github</a> or <a href="https://www.linkedin.com/pub/michael-noukhovitch">linkedin</a> </p>
+				</div>
+			</div>
+			<div class="footer text-center">
+				<p class="text-muted"> Licensed under MIT, if it really matters </p>
+			</div>
+		</div>
 	</body>
-    <footer>
-        Created by Michael Noukhovitch. Released under <a href="http://opensource.org/licenses/MIT"> MIT License </a>
-    </footer>
-
-
 </html>
