@@ -1,8 +1,6 @@
 # README
 
-## My personal website
-Written in HTML, CSS, and JS (Jquery) from scratch
+This is my personal website written with bootstrap. Minimal but useful.
 
+Licensed under [MIT](./LICENSE)
 
-## Todo
-Add "blog" part with Jekyll and update UI to match
