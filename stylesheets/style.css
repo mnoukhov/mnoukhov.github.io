@@ -6,6 +6,14 @@ h1 {
 	text-align: center;
 }
 
+h3 {
+	margin-top: 40px;
+}
+
+footer {
+	margin-top: 40px;
+}
+
 .navbar-clear {
 	box-shadow: none;
 	background-color: white;
