@@ -14,18 +14,20 @@ h4 {
     margin-bottom: auto;
 }
 
-h5 {
-    font-size: 18px;
-    color: #666666;
-    margin-top: auto;
-}
-
 p {
+    font-size: 14px;
     margin-top: 1em;
 }
 
 footer {
 	margin-top: 40px;
+}
+
+.paper-links {
+    font-size: medium;
+    line-height: 1.2em;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .navbar-clear {
