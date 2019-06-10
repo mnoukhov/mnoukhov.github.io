@@ -27,7 +27,11 @@ footer {
     font-size: medium;
     line-height: 1.2em;
     display: inline-block;
-    margin-bottom: 10px;
+    padding-right: 1em;
+}
+
+.final-links {
+    margin-bottom: 12px;
 }
 
 .navbar-clear {
