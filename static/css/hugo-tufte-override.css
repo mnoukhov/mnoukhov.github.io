@@ -1,0 +1,13 @@
+.small {
+  font-size: 0.9rem;
+  color: #444;
+  letter-spacing: 0.01em;
+}
+
+ul {
+  padding-left: 1.1rem;
+}
+
+ul li {
+  margin-bottom: 0.35rem;
+}
