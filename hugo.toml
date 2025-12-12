@@ -16,7 +16,6 @@ pagerSize = 5
     guessSyntax = true
 
 [params]
-subtitle = "AI researcher and writer"
 marginNoteInd = "⊕"
 showPoweredBy = false
 showSummary = true
