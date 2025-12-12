@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article id="main" class="home-page">
+  {{ partial "brand.html" . }}
+  {{ with .Content }}
+    <section>
+    {{ . }}
+    </section>
+  {{ end }}
+  {{ partial "footer.html" . }}
+</article>
+{{ end }}
