@@ -24,7 +24,7 @@ math = false
 KaTeXVersion = "0.16.4"
 KaTeXCDN = "//cdn.jsdelivr.net/npm"
 centerArticle = false
-sansSubtitle = true
+sansSubtitle = false
 favicon = "favicon.ico"
 touchicon = "touch-icon.png"
 
