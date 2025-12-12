@@ -1,5 +1,5 @@
 .small {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #444;
   letter-spacing: 0.01em;
 }
@@ -10,4 +10,13 @@ ul {
 
 ul li {
   margin-bottom: 0.35rem;
+}
+
+.home-page ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.home-page ul li {
+  margin-left: 0;
 }
