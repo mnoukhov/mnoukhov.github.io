@@ -74,7 +74,7 @@ My research goal is to learn interaction with humans through language, with inte
 - **[ElementAI](https://www.elementai.com/)** — Research Intern
   <span class="muted">PyTorch · HuggingFace</span>
   Collaborated with Dzmitry Bahdanau and Harm de Vries on language pretraining for text-to-SQL at a fast-moving Montreal startup.
-- **[NextAI](https://www.nextcanada.com/next-ai/)** — Scientist in Residence
+- **[NextAI](https://www.nextcanada.com/next-ai/)** — Scientist in Residence <br>
   Consulted the 2019 Montreal cohort on machine learning for water data, supply chains, dark web tracking, and dental information.
 - **[Mila](https://mila.quebec)** — Research Intern
   <span class="muted">Python · Theano</span>
@@ -96,10 +96,12 @@ My research goal is to learn interaction with humans through language, with inte
   Implemented statistical machine learning for pattern detection and classification, including a novel algorithm.
 
 ## Talks
-- Asynchronous RLHF — Cohere Safety RG
-- Asynchronous RLHF — Samsung-Mila-NYU Meeting
-- Asynchronous RLHF — NVIDIA
-- Asynchronous RLHF — U of T Safety RG
+
+Asynchronous RLHF
+- Cohere Safety RG
+- Samsung-Mila-NYU Meeting
+- NVIDIA
+- U of T Safety RG
 
 ## Contact
 I am `mnoukhov` pretty much everywhere. Feel free to email me @gmail or find me on [GitHub](https://github.com/mnoukhov) or [LinkedIn](https://ca.linkedin.com/in/mnoukhov).
