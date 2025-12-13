@@ -13,6 +13,8 @@
 .home-page .muted,
 .home-page .small {
   font-size: inherit !important;
+  display: block;
+  margin-top: 0.02rem;
 }
 
 ul {
@@ -30,4 +32,18 @@ ul li {
 
 .home-page ul li {
   margin-left: 0;
+  margin-bottom: 1.4rem;
+}
+
+.home-page #papers li .muted + .muted {
+  margin-top: 0.02rem;
+  color: #000;
+}
+
+.home-page #papers li .muted + .muted a {
+  color: #666;
+}
+
+.home-page #papers br {
+  display: none;
 }
