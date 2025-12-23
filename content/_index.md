@@ -11,47 +11,63 @@ Hi, I'm a PhD candidate in artificial intelligence at [Mila](https://mila.quebec
 My research goal is to learn interaction with humans through language, with interests that span NLP, reinforcement learning, and more. I recently talked about some of my research on [a podcast](https://open.spotify.com/episode/56z7y0YTZNKsS2AtNNAfC7?si=fdd7589c5dee4106).
 
 ## Papers
+- **[Olmo 3](https://allenai.org/blog/olmo3), [3.1](https://arxiv.org/abs/2512.13961)**
+    <span class="muted">Olmo Team, Allen Institute for AI </span>
+    <span class="muted"> core contributor, lead RL-Zero </span>
+    <span class="muted">Released Nov 2025 · [Repro Code](https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3) </span>
+- **[Learning Robust Social Strategies with Large Language Models](https://arxiv.org/abs/2511.19405)** 
+    <span class="muted">D Piche, M Muqeeth, M Aghajohari, J Duque, <em>M Noukhovitch</em>, A Courville</span>
+    <span class="muted"><em>under review</em></span>
+- **[Compositional Discrete Latent Code for High Fidelity, Productive Diffusion Models](https://arxiv.org/abs/2507.12318)**
+    <span class="muted">S Lavoie, <em>M Noukhovitch</em>, A Courville</span>
+    <span class="muted">NeurIPS 2025 · [Code](https://github.com/lavoiems/DiscreteLatentCode) · [Podcast Discussion](https://www.youtube.com/watch?v=SASq_cteI6s) </span>
+- **[Asynchronous RLHF: Faster and More Efficient Off-Policy RL for Language Models]()**
+    <span class="muted"><em>M Noukhovitch</em>, S Huang, S Xhonneux, A Hosseini, R Agarwal, A Courville</span>
+    <span class="muted">ICLR 2025 · [Code](https://github.com/mnoukhov/async_rlhf) · [Recorded Talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs) </span>
+- **[The N+ implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization]()**
+    <span class="muted">S Huang, <em>M Noukhovitch</em>, A Hosseini, K Rasul, W Wang, L Tunstall</span>
+    <span class="muted">CoLM 2024 · [Code](https://github.com/vwxyzjn/summarize_from_feedback_details) </span>
 - **[Learning Multi-Agent Communication with Contrastive Learning](https://openreview.net/forum?id=vZZ4hhniJU)**
-  <span class="muted">Yat Long Lo, Biswa Sengupta, Jakob Nicolaus Foerster, <em>Michael Noukhovitch</em></span>
+  <span class="muted">Yat Long Lo, Biswa Sengupta, Jakob Nicolaus Foerster, <em>M Noukhovitch</em></span>
   <span class="muted">ICLR 2024</span>
 - **[Language Model Alignment with Elastic Reset](https://openreview.net/forum?id=6lgugutkin)**
-  <span class="muted"><em>Michael Noukhovitch</em>, Samuel Lavoie, Florian Strub, Aaron Courville</span>
+  <span class="muted"><em>M Noukhovitch</em>, Samuel Lavoie, Florian Strub, Aaron Courville</span>
   <span class="muted">NeurIPS 2023 · <a href="https://github.com/mnoukhov/elastic-reset">Code</a></span>
 - **[Simplicial Embeddings in Self-Supervised Learning and Downstream Classification](https://openreview.net/forum?id=RWtGreRpovS)**
-  <span class="muted">Samuel Lavoie, Christos Tsirigotis, Max Schwarzer, Ankit Vani, <em>Michael Noukhovitch</em>, Kenji Kawaguchi, Aaron Courville</span>
+  <span class="muted">Samuel Lavoie, Christos Tsirigotis, Max Schwarzer, Ankit Vani, <em>M Noukhovitch</em>, Kenji Kawaguchi, Aaron Courville</span>
   <span class="muted">ICLR 2023 · Spotlight (Top 25%) · <a href="https://github.com/lavoiems/simplicial-embeddings">Code</a></span>
 - **[Countering Language Drift with KL Regularization](https://internlp.github.io/2022/documents/2022/papers/13.pdf)**
-  <span class="muted"><em>Michael Noukhovitch</em>, Samuel Lavoie, Issam H. Laradji, Douwe Kiela, Florian Strub, Aaron Courville</span>
+  <span class="muted"><em>M Noukhovitch</em>, Samuel Lavoie, Issam H. Laradji, Douwe Kiela, Florian Strub, Aaron Courville</span>
   <span class="muted">InterNLP Workshop @ NeurIPS 2022</span>
 - **Competition exacerbates Language Drift**
-  <span class="muted"><em>Michael Noukhovitch</em>, Aaron Courville, Issam H. Laradji</span>
+  <span class="muted"><em>M Noukhovitch</em>, Aaron Courville, Issam H. Laradji</span>
   <span class="muted">Machine Learning and the Evolution of Language Workshop @ JCoLE 2022</span>
 - **[Pretraining Representations for Data-Efficient Reinforcement Learning](https://arxiv.org/abs/2106.04799)**
-  <span class="muted">Max Schwarzer, Nitarshan Rajkumar, <em>Michael Noukhovitch</em>, Ankesh Anand, Laurent Charlin, Devon Hjelm, Philip Bachman, Aaron Courville</span>
+  <span class="muted">Max Schwarzer, Nitarshan Rajkumar, <em>M Noukhovitch</em>, Ankesh Anand, Laurent Charlin, Devon Hjelm, Philip Bachman, Aaron Courville</span>
   <span class="muted">NeurIPS 2021 · <a href="https://github.com/mila-iqia/SGI">Code</a></span>
 - **[Emergent Communication under Competition](https://arxiv.org/abs/2101.10276)**
-  <span class="muted"><em>Michael Noukhovitch</em>, Travis LaCroix, Angeliki Lazaridou, Aaron Courville</span>
+  <span class="muted"><em>M Noukhovitch</em>, Travis LaCroix, Angeliki Lazaridou, Aaron Courville</span>
   <span class="muted">AAMAS 2021 · <a href="https://github.com/mnoukhov/emergent-compete">Circular Game</a> · <a href="https://github.com/mnoukhov/ecn">Negotiation Game</a> · <a href="https://slideslive.com/38954927/emergent-communication-under-competition">Talk & Slides</a></span>
 - **[Emergence of Communication with Selfish Agents](https://brussels.evolang.org/proceedings/evolang13_proceedings.pdf)**
-  <span class="muted"><em>Michael Noukhovitch</em>, Travis LaCroix, Angeliki Lazaridou, Aaron Courville</span>
+  <span class="muted"><em>M Noukhovitch</em>, Travis LaCroix, Angeliki Lazaridou, Aaron Courville</span>
   <span class="muted">EVOLANG 13 · Short paper, Oral</span>
 - **Considering Assumptions of Emergent Communication**
-  <span class="muted"><em>Michael Noukhovitch</em></span>
+  <span class="muted"><em>M Noukhovitch</em></span>
   <span class="muted">Montreal AI Symposium 2020 · Short paper, Poster</span>
 - **[Emerging Communication between Competitive Agents](http://hdl.handle.net/1866/24330)**
-  <span class="muted"><em>Michael Noukhovitch</em></span>
+  <span class="muted"><em>M Noukhovitch</em></span>
   <span class="muted">Master's Thesis, 2020</span>
 - **[Systematic Generalization: What Is Required and Can It Be Learned?](https://arxiv.org/abs/1811.12889)**
-  <span class="muted">Dzmitry Bahdanau, Shikhar Murty, <em>Michael Noukhovitch</em>, Thien Huu Nguyen, Harm de Vries, Aaron Courville</span>
+  <span class="muted">Dzmitry Bahdanau, Shikhar Murty, <em>M Noukhovitch</em>, Thien Huu Nguyen, Harm de Vries, Aaron Courville</span>
   <span class="muted">ICLR 2019 · <a href="https://github.com/rizar/systematic-generalization-sqoop">Code</a></span>
 - **Selective Emergent Communication with Partially Aligned Agents**
-  <span class="muted"><em>Michael Noukhovitch</em>, Aaron Courville</span>
+  <span class="muted"><em>M Noukhovitch</em>, Aaron Courville</span>
   <span class="muted">Emergent Communication Workshop @ NeurIPS 2018</span>
 - **[Oríon: Experiment Version Control for Efficient Hyperparameter Optimization](https://openreview.net/pdf?id=r1xkNLPixX)**
-  <span class="muted">Christos Tsirigotis, Xavier Bouthillier, François Corneau-Tremblay, Peter Henderson, Reyhane Askari, Samuel Lavoie-Marchildon, Tristan Deleu, Dendi Suhubdy, <em>Michael Noukhovitch</em>, Frédéric Bastien, Pascal Lamblin</span>
+  <span class="muted">Christos Tsirigotis, Xavier Bouthillier, François Corneau-Tremblay, Peter Henderson, Reyhane Askari, Samuel Lavoie-Marchildon, Tristan Deleu, Dendi Suhubdy, <em>M Noukhovitch</em>, Frédéric Bastien, Pascal Lamblin</span>
   <span class="muted">Workshop on Automatic Machine Learning @ ICML 2018 · <a href="https://github.com/Epistimio/orion">Code</a></span>
 - **[Commonsense mining as knowledge base completion? A study on the impact of novelty](https://arxiv.org/abs/1804.09259)**
-  <span class="muted">Stanisław Jastrzębski, Dzmitry Bahdanau, Seyedarian Hosseini, <em>Michael Noukhovitch</em>, Yoshua Bengio, Jackie Chi Kit Cheung</span>
+  <span class="muted">Stanisław Jastrzębski, Dzmitry Bahdanau, Seyedarian Hosseini, <em>M Noukhovitch</em>, Yoshua Bengio, Jackie Chi Kit Cheung</span>
   <span class="muted">NAACL 2018 Workshop on New Forms of Generalization in Deep Learning and Natural Language Processing · <a href="https://github.com/kudkudak/common-sense-prediction">Code</a></span>
 
 ## Projects
@@ -65,14 +81,17 @@ My research goal is to learn interaction with humans through language, with inte
   A classifier that reviews a Yelp user's reviews, trained on a million-review dataset during a Yelp hackathon.
 
 ## Experience
+- **[Allen Institute for AI](https://allenai.org)** — Research Intern
+  <span class="muted">pytorch · vllm · open-instruct </span>
+  RL training of Olmo 3 with Nathan Lambert, helping build infra and leading the RL-Zero effort to make a SOTA, fully-open, RL reasoning benchmark
 - **[ServiceNow Research](https://www.servicenow.com/research/)** — Visiting Researcher
-  <span class="muted">PyTorch · HuggingFace</span>
-  Returned two years later to work on semi-supervised language and reinforcement learning with Issam Laradji, focusing on production needs for NLP.
+  <span class="muted">pytorch · transformers </span>
+  Returned two years later to work on semi-supervised NLP and RL with Issam Laradji, focusing on production needs for NLP.
 - **[Facebook AI](https://ai.facebook.com/research/)** — Research Intern
-  <span class="muted">PyTorch</span>
+  <span class="muted">pytorch</span>
   Worked remotely with Douwe Kiela on language pretraining for interaction across NYC, Menlo Park, and Montreal time zones.
 - **[ElementAI](https://www.elementai.com/)** — Research Intern
-  <span class="muted">PyTorch · HuggingFace</span>
+  <span class="muted">pytorch · HuggingFace</span>
   Collaborated with Dzmitry Bahdanau and Harm de Vries on language pretraining for text-to-SQL at a fast-moving Montreal startup.
 - **[NextAI](https://www.nextcanada.com/next-ai/)** — Scientist in Residence <br>
   Consulted the 2019 Montreal cohort on machine learning for water data, supply chains, dark web tracking, and dental information.
@@ -97,11 +116,11 @@ My research goal is to learn interaction with humans through language, with inte
 
 ## Talks
 
-Asynchronous RLHF
-- Cohere Safety RG
-- Samsung-Mila-NYU Meeting
-- NVIDIA
-- U of T Safety RG
+- **Asynchronous RLHF** [slides]() [recorded talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs)
+  - Cohere Safety RG — Mar 2024
+  - Samsung-Mila-NYU Meeting — Mar 2024
+  - NVIDIA — Mar 2024
+  - U of T Safety RG — Mar 2024
 
 ## Contact
 I am `mnoukhov` pretty much everywhere. Feel free to email me @gmail or find me on [GitHub](https://github.com/mnoukhov) or [LinkedIn](https://ca.linkedin.com/in/mnoukhov).
