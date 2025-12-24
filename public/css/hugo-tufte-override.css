@@ -29,11 +29,29 @@ ul li {
   list-style: none;
   list-style-position: inside;
   padding-left: 0;
+  width: 55%;
+}
+
+.home-page > section > ul p {
+  width: 100%;
+  margin-bottom: 0rem;
 }
 
 .home-page > section > ul > li {
   margin-left: 0;
   margin-bottom: 1.4rem;
+}
+
+.home-page .menu ul {
+  width: 100%;
+  max-width: 60rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .home-page .menu ul {
+    white-space: normal;
+  }
 }
 
 .home-page #papers + ul li .muted + .muted {
@@ -50,14 +68,28 @@ ul li {
 }
 
 .home-page #talks + ul > li > ul {
-  margin-top: 0.35rem;
+  margin-top: 0.15rem;
   list-style: disc;
   list-style-position: inside;
   padding-left: 0;
 }
 
+.home-page #talks + ul {
+  margin-top: 0.4rem;
+}
+
+.home-page #talks + ul > li {
+  margin-bottom: 0.7rem;
+}
+
 .home-page #talks + ul > li > ul li {
-  margin-bottom: 0.2rem;
+  margin-top: 0.02rem;
+  margin-bottom: 0.02rem;
+}
+
+.home-page #talks + ul > li > ul li .talk-date {
+  float: right;
+  white-space: nowrap;
 }
 
 .home-page #talks + ul > li > ul li::marker {

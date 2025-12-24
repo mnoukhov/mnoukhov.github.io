@@ -1,7 +1,15 @@
 <nav class="menu">
+  {{ $page := . }}
   <ul>
-    {{ range .Site.Menus.nav }}
-      <li><a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a></li>
+    {{ if not $page.IsHome }}
+      <li><a href="{{ "/" | relURL }}">About</a></li>
+    {{ end }}
+
+    {{ range $page.Site.Menus.nav }}
+      {{ if and (not $page.IsHome) (eq .Identifier "posts") }}
+      {{ else }}
+        <li><a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a></li>
+      {{ end }}
     {{ end }}
 
     {{ if .IsHome }}

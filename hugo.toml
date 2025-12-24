@@ -34,12 +34,6 @@ touchicon = "touch-icon.png"
   tag = "tags"
 
 [[menu.nav]]
-name = "About"
-identifier = "about"
-url = "/"
-weight = -100
-
-[[menu.nav]]
 name = "Blog"
 identifier = "posts"
 url = "/posts/"

@@ -5,10 +5,9 @@ description: "PhD candidate focused on AI, language, and interaction."
 hasMath: false
 ---
 
-## About
 Hi, I'm a PhD candidate in artificial intelligence at [Mila](https://mila.quebec/) associated with [Université de Montréal](https://www.umontreal.ca/) and supervised by Aaron Courville. I finished my Master's there in 2019 and before that I graduated in 2017 with a Bachelor's in Software Engineering from the [University of Waterloo](https://uwaterloo.ca/), including an exchange term at [Lund University](http://www.lth.se) in Sweden.
 
-My research goal is to learn interaction with humans through language, with interests that span NLP, reinforcement learning, and more. I recently talked about some of my research on [a podcast](https://open.spotify.com/episode/56z7y0YTZNKsS2AtNNAfC7?si=fdd7589c5dee4106).
+My research goal is to learn how to use language efficiently and effectively for complex interactions with humans and AI. My interests span reinforcement learning, NLP, competitive multi-agent games, LLM efficiency, constrastive learning, and more.
 
 ## Papers
 - **[Olmo 3](https://allenai.org/blog/olmo3), [3.1](https://arxiv.org/abs/2512.13961)**
@@ -71,14 +70,18 @@ My research goal is to learn interaction with humans through language, with inte
   <span class="muted">NAACL 2018 Workshop on New Forms of Generalization in Deep Learning and Natural Language Processing · <a href="https://github.com/kudkudak/common-sense-prediction">Code</a></span>
 
 ## Projects
+- **[Open-Instruct](https://github.com/allenai/open-instruct)** <span class="muted">pytorch · vllm · transformers</span>
+  Open-sourcing SOTA RL for LLM techniques with concurrency: asynchronous RLHF, active sampling, in-flight updates
+- **[Huggingface TRL](https://github.com/huggingface/trl)** <span class="muted">pytorch · transformers</span>
+  Open-source contributions to a great RLHF library, correcting PPO and GRPO implementations
 - **[Oríon](https://github.com/Epistimio/orion)** <span class="muted">Python</span>
   Mila's asynchronous distributed hyperparameter optimization for deep neural networks.
-- **[Prototypr](https://github.com/htn-prototypr/prototypr)** <span class="muted">Python · OpenCV · Tesseract</span>
-  Android app that turns a hand-drawn mockup into a working React interface.
-- **[Card](https://github.com/mnoukhov/Card)** <span class="muted">Android</span>
-  Android app for creating and sharing electronic business cards using NFC.
-- **Meta-Reviewer** <span class="muted">Python · scikit-learn</span>
-  A classifier that reviews a Yelp user's reviews, trained on a million-review dataset during a Yelp hackathon.
+<!-- - **[Prototypr](https://github.com/htn-prototypr/prototypr)** <span class="muted">Python · OpenCV · Tesseract</span> -->
+<!--   Android app that turns a hand-drawn mockup into a working React interface. -->
+<!-- - **[Card](https://github.com/mnoukhov/Card)** <span class="muted">Android</span> -->
+<!--   Android app for creating and sharing electronic business cards using NFC. -->
+<!-- - **Meta-Reviewer** <span class="muted">Python · scikit-learn</span> -->
+<!--   A classifier that reviews a Yelp user's reviews, trained on a million-review dataset during a Yelp hackathon. -->
 
 ## Experience
 - **[Allen Institute for AI](https://allenai.org)** — Research Intern
@@ -86,41 +89,64 @@ My research goal is to learn interaction with humans through language, with inte
   RL training of Olmo 3 with Nathan Lambert, helping build infra and leading the RL-Zero effort to make a SOTA, fully-open, RL reasoning benchmark
 - **[ServiceNow Research](https://www.servicenow.com/research/)** — Visiting Researcher
   <span class="muted">pytorch · transformers </span>
-  Returned two years later to work on semi-supervised NLP and RL with Issam Laradji, focusing on production needs for NLP.
-- **[Facebook AI](https://ai.facebook.com/research/)** — Research Intern
-  <span class="muted">pytorch</span>
-  Worked remotely with Douwe Kiela on language pretraining for interaction across NYC, Menlo Park, and Montreal time zones.
+  NLP research with Issam Laradji, semi-supervised learning for dialogue state tracking and improving RLHF robustness
+- **[Meta AI](https://ai.meta.com/research/)** — Research Intern
+  <span class="muted">pytorch · fairseq</span>
+  Scaling NLP with Douwe Kiela, improving language finetuning for translation and interaction and scaling to larger models
 - **[ElementAI](https://www.elementai.com/)** — Research Intern
-  <span class="muted">pytorch · HuggingFace</span>
-  Collaborated with Dzmitry Bahdanau and Harm de Vries on language pretraining for text-to-SQL at a fast-moving Montreal startup.
+  <span class="muted">pytorch · transformers</span>
+  Text-to-SQL with Dzmitry Bahdanau and Harm de Vries, early language model finetuning and building infra at a fun Montreal startup
 - **[NextAI](https://www.nextcanada.com/next-ai/)** — Scientist in Residence <br>
-  Consulted the 2019 Montreal cohort on machine learning for water data, supply chains, dark web tracking, and dental information.
+  Consulted the 2019 Montreal cohort on machine learning for water data, supply chains, dark web tracking, and dental information
 - **[Mila](https://mila.quebec)** — Research Intern
   <span class="muted">Python · Theano</span>
-  Worked on backpropagation through stochastic discrete neurons applied to GANs and word embeddings.
+  Backpropagation through stochastic discrete neurons with Yoshua Bengio, applying novel ideas to GANs and word embeddings
 - **[Google Research](https://ai.google.com/research)** — Software Engineering Intern
   <span class="muted">Python · TensorFlow · Blender</span>
-  Designed benchmarks, data pipelines, and models for a computer vision task while diving deep into coffee and latte art.
+  Building deep baselines and pipelines with Wei Hua, designing benchmarks and building deep learning CV models for motion tracking
 - **[Premise](http://www.premise.com/)** — Social Capital Fellowship Intern
   <span class="muted">Python · Java · Scala · Spark</span>
-  Built parts of the data analysis pipeline, Android app, and server code for real-time, crowd-sourced economic data.
+  Backend and data engineering for data analysis, an Android app, and server code to enable crowd-sourced economic data mining
 - **[Yelp](http://www.yelp.com)** — Software Engineering Intern
   <span class="muted">Python · JavaScript</span>
-  Worked on full-stack features for biz.yelp.com, including a new landing page, purchasing flow, and internationalized check-in offers.
+  Full-stack engineer on biz.yelp.com, building a new landing page, improving purchasing flow, and internationalized check-in offers
 - **[Watrhub](http://www.watrhub.com/)** — Software Engineering Intern
   <span class="muted">Python · ElasticSearch</span>
-  Developed scraping, classification, and ElasticSearch integrations for unstructured text search across PDFs.
+  Algorithm engineering for semi-supervised classification, web scraping, and ElasticSearch integrations to parse wastewater data PDFs into structured formats
 - **Canadian Government** — Data Scientist
   <span class="muted">Python</span>
-  Implemented statistical machine learning for pattern detection and classification, including a novel algorithm.
+  Implemented statistical machine learning for pattern detection and classification, optimizing classification effectiveness and inference speed
 
 ## Talks
 
-- **Asynchronous RLHF** [slides]() [recorded talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs)
-  - Cohere Safety RG — Mar 2024
-  - Samsung-Mila-NYU Meeting — Mar 2024
-  - NVIDIA — Mar 2024
-  - U of T Safety RG — Mar 2024
+- **Olmo 3**
+    - Courville Group Meeting <span class="talk-date">Dec 2025</span>
+    - AllenNLP Team Meeting @ Ai2 <span class="talk-date">Oct 2025</span>
+
+- [**Modern Post-Training of LLMs**](https://docs.google.com/presentation/d/1DRRhHYtQmP-Xn4cbErr_0wE09NHonWKZPiczcQecJGo/edit?usp=sharing) · [RL Exercise Slides](https://docs.google.com/presentation/d/11NHZyHBoLMgMf-KYjSUSRSeWFKdE24sZVl9uAEWMT6k/edit?usp=sharing) · [Code](https://github.com/osoblanco/ArmLLM/blob/main/2025/Post-Training/README.md)
+    - Armenia LLM Summer School <span class="talk-date">Jul 2025</span>
+
+- [**Asynchronous RLHF**](https://docs.google.com/presentation/d/1kl6W3Pp_eP91O86HZPK0GuAdQpZwm8BmkDl1s646aGQ/edit?usp=sharing) · [recorded talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs)
+    - Cohere Labs RG <span class="talk-date">Jun 2025</span>
+    - Samsung-Mila-NYU Meeting <span class="talk-date">Jun 2025</span>
+    - Deep Learning: Classics and Trends <span class="talk-date">Mar 2025</span>
+    - NVIDIA <span class="talk-date">Jan 2025</span>
+    - U of T Safety RG <span class="talk-date">Nov 2024</span>
+
+- [**N+ Implementation Details of RLHF with PPO**](https://docs.google.com/presentation/d/1Q4Mz7j8xczw3Qt5vofRnKJaVwfuUP6bpnlMO-vDBkfs/edit?usp=sharing)
+    - Andreas Group Meeting @ MIT <span class="talk-date">Jul 2024</span>
+
+- [**Elastic Reset**](https://docs.google.com/presentation/d/1zqMiBtV7_Y0jbwBkVUSK2Ju5-34DrZxZkLdSiBLJIeQ/edit?usp=sharing)
+    - Courville Group Meeting <span class="talk-date">Oct 2023</span>
+    - Sony-Mila Collaboration Report <span class="talk-date">May 2023</span>
+
+- [**Language, AI, and Meaning**](https://docs.google.com/presentation/d/11sZqrbpDdy1wxf0LEQU1YRuOcTJjTn7J-OzBFFZI04A/edit?usp=sharing)
+    - WARA Summer School <span class="talk-date">Jul 2022</span>
+    - [WARA Podcast](https://open.spotify.com/episode/56z7y0YTZNKsS2AtNNAfC7?si=fdd7589c5dee4106).
+
+- [**Competitive Emergent Communication**](https://docs.google.com/presentation/d/1eIRKIQggXMMjXJ-V9HnnrrO4EHl5i9pIFIK7yWwTX08/edit?usp=sharing)
+  - Deepmind LIG RG <span class="talk-date">May 2021</span>
+  - OATML Group Meeting @ Oxford <span class="talk-date">May 2019</span>
 
 ## Contact
-I am `mnoukhov` pretty much everywhere. Feel free to email me @gmail or find me on [GitHub](https://github.com/mnoukhov) or [LinkedIn](https://ca.linkedin.com/in/mnoukhov).
+I am `mnoukhov` pretty much everywhere. Feel free to email me @gmail.com or find me on [Twitter](https://x.com/mnoukhov), [GitHub](https://github.com/mnoukhov), or [LinkedIn](https://ca.linkedin.com/in/mnoukhov).
