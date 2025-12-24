@@ -1,5 +1,11 @@
 <head>
-<title>{{ .Title }} - {{ .Site.Title }}</title>
+{{ $pageTitle := printf "%s - %s" .Title .Site.Title }}
+{{ if .IsHome }}
+  {{ $pageTitle = "Michael Noukhovitch - About" }}
+{{ else if eq .Section "posts" }}
+  {{ $pageTitle = "Michael Noukhovitch - Blog" }}
+{{ end }}
+<title>{{ $pageTitle }}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
