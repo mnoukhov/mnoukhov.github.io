@@ -9,7 +9,7 @@ For the past two years, I have been fascinated by the field of emergent communic
 
 This is the first post in the series and my goal is explain the basic idea and give a couple different exciting motivations for studying it.
 
-Update: this post was also translated to [Russian](https://habr.com/ru/post/496830/) by Anton Alexeyev
+*Update: this post was also translated to [Russian](https://habr.com/ru/post/496830/) by Anton Alexeyev*
 
 ## What is Emergent Communication?
 
@@ -68,3 +68,14 @@ I've introduced the basics of emergent communication and hopefully given a taste
 
 ### Acknowledgements
 Thank you to my friend Christine Xu for feedback and editing, my coauthor [Travis Lacroix](https://travislacroix.github.io/) and my workshop co-organizers for read-throughs and support.
+
+### Citation
+
+```
+@misc{noukhovitch2019emergentintro
+    author = {Michael Noukhovitch},
+    title = {Emergent Communication: An Introduction},
+    year = {2019},
+    url = {mnoukhov.github.io/posts/emergent-communication-introduction}
+}
+```
