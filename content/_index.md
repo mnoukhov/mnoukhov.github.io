@@ -123,7 +123,7 @@ My research goal is to learn how to use language efficiently and effectively for
     - Courville Group Meeting <span class="talk-date">Dec 2025</span>
     - AllenNLP Team Meeting @ Ai2 <span class="talk-date">Oct 2025</span>
 
-- [**Modern Post-Training of LLMs**](https://docs.google.com/presentation/d/1DRRhHYtQmP-Xn4cbErr_0wE09NHonWKZPiczcQecJGo/edit?usp=sharing) · [RL Exercise Slides](https://docs.google.com/presentation/d/11NHZyHBoLMgMf-KYjSUSRSeWFKdE24sZVl9uAEWMT6k/edit?usp=sharing) · [Code](https://github.com/osoblanco/ArmLLM/blob/main/2025/Post-Training/README.md)
+- [**Modern Post-Training of LLMs**](https://docs.google.com/presentation/d/1DRRhHYtQmP-Xn4cbErr_0wE09NHonWKZPiczcQecJGo/edit?usp=sharing) · [RL exercise slides](https://docs.google.com/presentation/d/11NHZyHBoLMgMf-KYjSUSRSeWFKdE24sZVl9uAEWMT6k/edit?usp=sharing) · [code](https://github.com/osoblanco/ArmLLM/blob/main/2025/Post-Training/README.md)
     - Armenia LLM Summer School <span class="talk-date">Jul 2025</span>
 
 - [**Asynchronous RLHF**](https://docs.google.com/presentation/d/1kl6W3Pp_eP91O86HZPK0GuAdQpZwm8BmkDl1s646aGQ/edit?usp=sharing) · [recorded talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs)
