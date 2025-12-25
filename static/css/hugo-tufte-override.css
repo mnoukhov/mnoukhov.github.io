@@ -110,9 +110,21 @@ ul li {
   font-size: inherit;
 }
 
-.byline {
-  color: rgba(0, 0, 0, 0.6);
-  font-style: italic;
+.list-page-posts ul {
+  line-height: 2rem;
+}
+
+.list-page-posts {
+  padding-top: 0;
+}
+
+.list-page-posts h2.year:first-of-type {
+  margin-top: 0.2rem;
+}
+
+.post-page .byline {
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-style: italic !important;
   font-size: 1.5rem;
 }
 
@@ -127,6 +139,6 @@ ul li {
   margin-bottom: 0.8rem;
 }
 
-.post-page .content-title {
-  margin-top: 2rem;
+.post-page section:first-of-type {
+  padding-top: 0;
 }

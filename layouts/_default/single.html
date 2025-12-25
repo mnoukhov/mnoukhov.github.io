@@ -11,6 +11,9 @@
   {{ partial "content.header.html" . }}
   {{ partial "toc.html" . }}
   <section>{{ .Content }}</section>
+  <section>
+    <p><a href="{{ "/posts/" | relURL }}">Back to all blog posts</a></p>
+  </section>
   <section>{{ partial "footer.html" . }}</section>
 </article>
 {{ end }}

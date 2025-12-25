@@ -26,7 +26,6 @@ KaTeXCDN = "//cdn.jsdelivr.net/npm"
 centerArticle = false
 sansSubtitle = false
 favicon = "favicon_32x32_bw.png"
-touchicon = "touch-icon.png"
 
 [taxonomies]
   category = "categories"

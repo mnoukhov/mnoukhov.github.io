@@ -4,7 +4,7 @@
 <article class="pure-u-1">
 
 {{ partial "brand.html" . }}
-<section class="list-page">
+<section class="list-page{{ if eq .Section "posts" }} list-page-posts{{ end }}">
   {{ $pages := .Data.Pages.ByDate.Reverse }}
   {{ range $pages.GroupByDate "2006" }}
     <h2 class="year">{{ .Key }}</h2>
