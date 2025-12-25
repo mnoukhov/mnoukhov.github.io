@@ -1,5 +1,5 @@
 ---
-title: "Emergent Communication: The What and The Why"
+title: "Emergent Communication: What and Why"
 date: 2019-08-01
 description: "An accessible introduction to emergent communication and why it matters."
 tags: ["emergent communication", "research", "multi-agent"]

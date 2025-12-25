@@ -95,3 +95,38 @@ ul li {
 .home-page #talks + ul > li > ul li::marker {
   font-size: 0.7em;
 }
+
+.list-page h2.year {
+  margin-bottom: 0.6rem;
+}
+
+.list-page ul {
+  list-style: disc;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.list-page .list-date {
+  font-size: inherit;
+}
+
+.byline {
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+.post-page .menu {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-top: 0rem;
+}
+
+.post-page .menu + hr {
+  margin-top: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.post-page .content-title {
+  margin-top: 2rem;
+}

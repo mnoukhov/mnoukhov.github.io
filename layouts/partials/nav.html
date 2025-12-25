@@ -6,13 +6,10 @@
     {{ end }}
 
     {{ range $page.Site.Menus.nav }}
-      {{ if and (not $page.IsHome) (eq .Identifier "posts") }}
-      {{ else }}
-        <li><a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a></li>
-      {{ end }}
+      <li><a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a></li>
     {{ end }}
 
-    {{ if .IsHome }}
+    {{ if $page.IsHome }}
       <li><a href="#papers">Papers</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
