@@ -1,0 +1,20 @@
+<nav class="menu">
+  {{ $page := . }}
+  <ul>
+    {{ if not $page.IsHome }}
+      <li><a href="{{ "/" | relURL }}">About</a></li>
+    {{ end }}
+
+    {{ range $page.Site.Menus.nav }}
+      <li><a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a></li>
+    {{ end }}
+
+    {{ if $page.IsHome }}
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#contact">Contact</a></li>
+    {{ end }}
+  </ul>
+</nav>

@@ -1,0 +1,144 @@
+.small {
+  font-size: inherit;
+  color: #444;
+  letter-spacing: 0.01em;
+}
+
+.muted {
+  color: #444;
+  font-size: inherit;
+  letter-spacing: 0.01em;
+}
+
+.home-page .muted,
+.home-page .small {
+  font-size: inherit !important;
+  display: block;
+  margin-top: 0.02rem;
+}
+
+ul {
+  padding-left: 1.1rem;
+}
+
+ul li {
+  margin-bottom: 0.35rem;
+}
+
+.home-page > section > ul {
+  list-style: none;
+  list-style-position: inside;
+  padding-left: 0;
+  width: 55%;
+}
+
+.home-page > section > ul p {
+  width: 100%;
+  margin-bottom: 0rem;
+}
+
+.home-page > section > ul > li {
+  margin-left: 0;
+  margin-bottom: 1.4rem;
+}
+
+.home-page .menu ul {
+  width: 100%;
+  max-width: 60rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .home-page .menu ul {
+    white-space: normal;
+  }
+}
+
+.home-page #papers + ul li .muted + .muted {
+  margin-top: 0.02rem;
+  color: #000;
+}
+
+.home-page #papers + ul li .muted + .muted a {
+  color: #666;
+}
+
+.home-page #papers + ul br {
+  display: none;
+}
+
+.home-page #talks + ul > li > ul {
+  margin-top: 0.15rem;
+  list-style: disc;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.home-page #talks + ul {
+  margin-top: 0.4rem;
+}
+
+.home-page #talks + ul > li {
+  margin-bottom: 0.7rem;
+}
+
+.home-page #talks + ul > li > ul li {
+  margin-top: 0.02rem;
+  margin-bottom: 0.02rem;
+}
+
+.home-page #talks + ul > li > ul li .talk-date {
+  float: right;
+  white-space: nowrap;
+}
+
+.home-page #talks + ul > li > ul li::marker {
+  font-size: 0.7em;
+}
+
+.list-page h2.year {
+  margin-bottom: 0.6rem;
+}
+
+.list-page ul {
+  list-style: disc;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.list-page .list-date {
+  font-size: inherit;
+}
+
+.list-page-posts ul {
+  line-height: 2rem;
+}
+
+.list-page-posts {
+  padding-top: 0;
+}
+
+.list-page-posts h2.year:first-of-type {
+  margin-top: 0.2rem;
+}
+
+.post-page .byline {
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-style: italic !important;
+  font-size: 1.5rem;
+}
+
+.post-page .menu {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-top: 0rem;
+}
+
+.post-page .menu + hr {
+  margin-top: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.post-page section:first-of-type {
+  padding-top: 0;
+}

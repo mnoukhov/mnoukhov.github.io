@@ -1,0 +1,25 @@
+<head>
+{{ $pageTitle := printf "%s - %s" .Title .Site.Title }}
+{{ if .IsHome }}
+  {{ $pageTitle = "Michael Noukhovitch - About" }}
+{{ else if eq .Section "posts" }}
+  {{ $pageTitle = "Michael Noukhovitch - Blog" }}
+{{ end }}
+<title>{{ $pageTitle }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ if .Site.Params.favicon }}
+<link rel="icon" href="{{ .Site.Params.favicon | absURL }}" />
+{{ end }}
+{{ if .Site.Params.touchicon }}
+<link rel="apple-touch-icon" href="{{ .Site.Params.touchicon | absURL }}" />
+{{ end }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{ $htstyle := resources.Get "scss/hugo-tufte.scss" | resources.ExecuteAsTemplate "main.scss" . | css.Sass (dict "targetPath" "/css/hugo-tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+<link rel="stylesheet" href="{{ $htstyle.RelPermalink }}">
+{{ $htOptions := resources.Get "scss/hugo-tufte-options.scss" | resources.ExecuteAsTemplate "main.scss" . | css.Sass (dict "targetPath" "/css/hugo-tufte-options.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+<link rel="stylesheet" href="{{ $htOptions.RelPermalink }}">
+<link rel="stylesheet" href="{{ "/css/hugo-tufte-override.css" | relURL }}">
+</head>
