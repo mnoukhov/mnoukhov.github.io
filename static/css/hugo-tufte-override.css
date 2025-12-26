@@ -52,6 +52,10 @@ ul li {
   .home-page .menu ul {
     white-space: normal;
   }
+
+  .home-page > section > ul {
+    width: 90%;
+  }
 }
 
 .home-page #papers + ul li .muted + .muted {
