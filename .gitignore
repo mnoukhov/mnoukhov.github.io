@@ -3,11 +3,8 @@
 *.out
 
 # Generated files by hugo
-/public/
-exampleSite/public/*
-/resources/_gen/
-/exampleSite/resources/_gen/
-/assets/jsconfig.json
+public/
+resources/_gen/
 hugo_stats.json
 
 # Node
