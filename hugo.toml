@@ -1,8 +1,11 @@
 baseURL = "https://mnoukhov.github.io/"
 languageCode = "en-us"
 title = "Michael Noukhovitch"
-theme = "hugo-tufte"
 canonifyURLs = true
+
+[module]
+  [[module.imports]]
+    path = "github.com/loikein/hugo-tufte"
 
 [pagination]
 pagerSize = 5
