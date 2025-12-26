@@ -1,3 +1,18 @@
 # Vim swap files
 *.swp
 *.out
+
+# Generated files by hugo
+/public/
+exampleSite/public/*
+/resources/_gen/
+/exampleSite/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+
+# Node
+package-lock.json
+node_modules
+
+# Temporary lock file while building
+.hugo_build.lock

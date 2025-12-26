@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/multi-agent/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Emergent Communication: An Introduction</title>
-      <link>http://localhost:1313/posts/emergent-communication-what-and-why/</link>
+      <link>http://localhost:1313/posts/emergent-communication-intro/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/emergent-communication-what-and-why/</guid>
+      <guid>http://localhost:1313/posts/emergent-communication-intro/</guid>
       <description>&lt;p&gt;For the past two years, I have been fascinated by the field of emergent communication; I even made it the topic of my master&amp;rsquo;s thesis. This year, I am co-organizing the event that sparked my interest: &lt;a href=&#34;https://sites.google.com/view/emecom2019&#34;&gt;The Workshop on Emergent Communication at NeurIPS 2019&lt;/a&gt;. To give others a look into the field (and also to make my thesis writing more fun), I will be writing a series of blog posts on emergent communication that are meant to be accessible and interesting. I&amp;rsquo;m hoping to communicate some of the magic that has captivated me.&lt;/p&gt;</description>
     </item>
   </channel>
