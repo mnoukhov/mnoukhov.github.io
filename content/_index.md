@@ -10,6 +10,9 @@ Hi, I'm a PhD candidate in artificial intelligence at [Mila](https://mila.quebec
 My research goal is to learn how to use language efficiently and effectively for complex interactions with humans and AI. My interests span reinforcement learning, NLP, competitive multi-agent games, LLM efficiency, constrastive learning, and more.
 
 ## Papers
+- **[Gradient Regularization Prevents Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards](https://arxiv.org/abs/2602.18037)**
+    <span class="muted">J Ackermann, <em>M Noukhovitch</em>, T Ishida, M Sugiyama</span>
+    <span class="muted"> under review </span>
 - **[Olmo 3](https://allenai.org/blog/olmo3), [3.1](https://arxiv.org/abs/2512.13961)**
     <span class="muted">Olmo Team, Allen Institute for AI </span>
     <span class="muted"> core contributor, lead RL-Zero </span>
