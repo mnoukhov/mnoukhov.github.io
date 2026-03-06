@@ -10,6 +10,9 @@ Hi, I'm a PhD candidate in artificial intelligence at [Mila](https://mila.quebec
 My research goal is to learn how to use language efficiently and effectively for complex interactions with humans and AI. My interests span reinforcement learning, NLP, competitive multi-agent games, LLM efficiency, constrastive learning, and more.
 
 ## Papers
+- **[Align and Filter: Improving Performance in Asynchronous On-Policy RL](https://arxiv.org/abs/2603.01365)**
+    <span class="muted">H Honari, R C Castanyer, M Przystupa, <em>M Noukhovitch</em>, P S Castro, G Berseth</span>
+    <span class="muted"> under review </span>
 - **[Gradient Regularization Prevents Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards](https://arxiv.org/abs/2602.18037)**
     <span class="muted">J Ackermann, <em>M Noukhovitch</em>, T Ishida, M Sugiyama</span>
     <span class="muted"> under review </span>
