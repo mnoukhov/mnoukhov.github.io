@@ -13,16 +13,16 @@ My research goal is to learn how to use language efficiently and effectively for
 - **[Align and Filter: Improving Performance in Asynchronous On-Policy RL](https://arxiv.org/abs/2603.01365)**
     <span class="muted">H Honari, R C Castanyer, M Przystupa, <em>M Noukhovitch</em>, P S Castro, G Berseth</span>
     <span class="muted"> under review </span>
+- **[Learning Robust Social Strategies with Large Language Models](https://arxiv.org/abs/2511.19405)** 
+    <span class="muted">D Piche, M Muqeeth, M Aghajohari, J Duque, <em>M Noukhovitch</em>, A Courville</span>
+    <span class="muted"><em>under review</em></span>
 - **[Gradient Regularization Prevents Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards](https://arxiv.org/abs/2602.18037)**
     <span class="muted">J Ackermann, <em>M Noukhovitch</em>, T Ishida, M Sugiyama</span>
-    <span class="muted"> under review </span>
+    <span class="muted"> ICML 2026 </span>
 - **[Olmo 3](https://allenai.org/blog/olmo3), [3.1](https://arxiv.org/abs/2512.13961)**
     <span class="muted">Olmo Team, Allen Institute for AI </span>
     <span class="muted"> core contributor, lead RL-Zero </span>
     <span class="muted">Released Nov 2025 · [Repro Code](https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3) </span>
-- **[Learning Robust Social Strategies with Large Language Models](https://arxiv.org/abs/2511.19405)** 
-    <span class="muted">D Piche, M Muqeeth, M Aghajohari, J Duque, <em>M Noukhovitch</em>, A Courville</span>
-    <span class="muted"><em>under review</em></span>
 - **[Compositional Discrete Latent Code for High Fidelity, Productive Diffusion Models](https://arxiv.org/abs/2507.12318)**
     <span class="muted">S Lavoie, <em>M Noukhovitch</em>, A Courville</span>
     <span class="muted">NeurIPS 2025 · [Code](https://github.com/lavoiems/DiscreteLatentCode) · [Podcast Discussion](https://www.youtube.com/watch?v=SASq_cteI6s) </span>
@@ -125,12 +125,16 @@ My research goal is to learn how to use language efficiently and effectively for
 
 ## Talks
 
+- [**Discrete Latent Code**](https://www.youtube.com/watch?v=SASq_cteI6s)
+    - Interview with SAIL at NeurIPS <span class="talk-date">Dec 2025</span>
+
 - **Olmo 3**
     - Courville Group Meeting <span class="talk-date">Dec 2025</span>
     - AllenNLP Team Meeting @ Ai2 <span class="talk-date">Oct 2025</span>
 
-- [**Modern Post-Training of LLMs**](https://docs.google.com/presentation/d/1DRRhHYtQmP-Xn4cbErr_0wE09NHonWKZPiczcQecJGo/edit?usp=sharing) · [RL exercise slides](https://docs.google.com/presentation/d/11NHZyHBoLMgMf-KYjSUSRSeWFKdE24sZVl9uAEWMT6k/edit?usp=sharing) · [code](https://github.com/osoblanco/ArmLLM/tree/9b9bc5e/2025/posttraining)
-    - Armenia LLM Summer School <span class="talk-date">Jul 2025</span>
+- [**Explaining Post-Training of LLMs**](https://www.youtube.com/watch?v=Ha2bAU4QY0o) · [slides](https://docs.google.com/presentation/d/1DRRhHYtQmP-Xn4cbErr_0wE09NHonWKZPiczcQecJGo/edit?usp=sharing) 
+    - Invited Talk at Armenia LLM Summer School <span class="talk-date">Jul 2025</span>
+    - [RL workshop slides](https://docs.google.com/presentation/d/11NHZyHBoLMgMf-KYjSUSRSeWFKdE24sZVl9uAEWMT6k/edit?usp=sharing) and [exercise code](https://github.com/osoblanco/ArmLLM/tree/9b9bc5e/2025/posttraining)
 
 - [**Asynchronous RLHF**](https://docs.google.com/presentation/d/1kl6W3Pp_eP91O86HZPK0GuAdQpZwm8BmkDl1s646aGQ/edit?usp=sharing) · [recorded talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs)
     - Cohere Labs RG <span class="talk-date">Jun 2025</span>
