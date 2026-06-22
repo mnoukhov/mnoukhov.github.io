@@ -15,7 +15,7 @@ My research goal is to learn how to use language efficiently and effectively for
     <span class="muted"> under review </span>
 - **[Learning Robust Social Strategies with Large Language Models](https://arxiv.org/abs/2511.19405)** 
     <span class="muted">D Piche, M Muqeeth, M Aghajohari, J Duque, <em>M Noukhovitch</em>, A Courville</span>
-    <span class="muted"><em>under review</em></span>
+    <span class="muted">under review</span>
 - **[Gradient Regularization Prevents Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards](https://arxiv.org/abs/2602.18037)**
     <span class="muted">J Ackermann, <em>M Noukhovitch</em>, T Ishida, M Sugiyama</span>
     <span class="muted"> ICML 2026 </span>
@@ -93,6 +93,12 @@ My research goal is to learn how to use language efficiently and effectively for
 - **[Allen Institute for AI](https://allenai.org)** — Research Intern
   <span class="muted">pytorch · vllm · open-instruct </span>
   RL training of Olmo 3 with Nathan Lambert, helping build infra and leading the RL-Zero effort to make a SOTA, fully-open, RL reasoning benchmark
+- **[Centre PHI](https://phi.ca/en/)** - Technical Collaborator
+  <span class="muted">LLM APIs · Stable Diffusion · TTS + voice-cloning </span>
+  Collaborating with artists to leverage AI for exhibitions: <br>
+  [Sex, Desire, and Data](https://phi.ca/en/studio/works/sdd-experience/) (2024) <br>
+  [Machines (Adjacent)](https://cocreating.art/) (2025) <br>
+  [Burn From Absence](https://phi.ca/en/events/burn-from-absence/) (2026) <br>
 - **[ServiceNow Research](https://www.servicenow.com/research/)** — Visiting Researcher
   <span class="muted">pytorch · transformers </span>
   NLP research with Issam Laradji, semi-supervised learning for dialogue state tracking and improving RLHF robustness
@@ -133,7 +139,7 @@ My research goal is to learn how to use language efficiently and effectively for
     - AllenNLP Team Meeting @ Ai2 <span class="talk-date">Oct 2025</span>
 
 - [**Explaining Post-Training of LLMs**](https://www.youtube.com/watch?v=Ha2bAU4QY0o) · [slides](https://docs.google.com/presentation/d/1DRRhHYtQmP-Xn4cbErr_0wE09NHonWKZPiczcQecJGo/edit?usp=sharing) 
-    - Invited Talk at Armenia LLM Summer School <span class="talk-date">Jul 2025</span>
+    - 3 hour invited lecture at Armenia LLM Summer School <span class="talk-date">Jul 2025</span>
     - [RL workshop slides](https://docs.google.com/presentation/d/11NHZyHBoLMgMf-KYjSUSRSeWFKdE24sZVl9uAEWMT6k/edit?usp=sharing) and [exercise code](https://github.com/osoblanco/ArmLLM/tree/9b9bc5e/2025/posttraining)
 
 - [**Asynchronous RLHF**](https://docs.google.com/presentation/d/1kl6W3Pp_eP91O86HZPK0GuAdQpZwm8BmkDl1s646aGQ/edit?usp=sharing) · [recorded talk](https://www.youtube.com/watch?v=3Tr5rS3uDDs)
