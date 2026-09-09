@@ -146,3 +146,38 @@ ul li {
 .post-page section:first-of-type {
   padding-top: 0;
 }
+
+/* Constrain the post title so it wraps earlier instead of running the
+   full page width at the widest viewport. */
+.post-page .content-title,
+.post-page .subtitle,
+.post-page .byline {
+  width: 75%;
+}
+
+/* Widen the post text column from the theme's 55% to ~80 characters. */
+.post-page p,
+.post-page footer,
+.post-page ol,
+.post-page ul,
+.post-page dl,
+.post-page blockquote p {
+  width: 60%;
+}
+
+@media (max-width: 760px) {
+  .post-page .content-title,
+  .post-page .subtitle,
+  .post-page .byline,
+  .post-page p,
+  .post-page footer,
+  .post-page blockquote p {
+    width: 90%;
+  }
+
+  .post-page ol,
+  .post-page ul,
+  .post-page dl {
+    width: 85%;
+  }
+}
