@@ -1,6 +1,6 @@
 ---
 title: "Learning to Solve Hard Problems in RL for LLMs by Never Giving Up"
-date: 2026-09-10
+date: 2026-09-09
 description: ""
 math: true
 toc: true
@@ -72,7 +72,7 @@ Our goal is therefore to only use small `$k$` for easy problems but have large `
 
 The tricky part is if all completions are wrong. With probability `$p$`, we *never give up* and add the prompt back to our generator in order to sample `$k$` more completions. We keep track of our old completions and when we do solve the problem, train on our whole `$k * \text{rounds of NGU}$` completions. This creates a geometric distribution for the number of samples we take: if we never solve the prompt, we expect to take `$\frac{ \ \ k}{1-p}$` samples, in expectation.
 
-NGU animation
+<maybe NGU animation>
 
 This method is implicitly adaptive. Whereas curriculum learning pre-sets the difficulty of a problem, we find that online, adaptive methods do better as easy problems can become more difficulty over training and vice-versa. On GSM8k, `$k=4$` with NGU `$p=0.9$` outperforms all values of standard GRPO with varied `$k$`. This is especially evident on the hardest subset.
 
