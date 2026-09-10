@@ -1,0 +1,16 @@
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- if not (or (hasPrefix $src "http") (hasPrefix $src "/")) -}}
+  {{- $src = printf "/images/%s" $src -}}
+{{- end -}}
+{{- $type := .Get "type" | default "video/mp4" -}}
+<figure>
+  <video controls preload="metadata"
+    {{- with .Get "poster" }} poster="{{ . }}"{{ end }}
+    {{- if eq (.Get "loop") "true" }} loop{{ end }}
+    {{- if eq (.Get "muted") "true" }} muted{{ end }}
+    style="width:100%">
+    <source src="{{ $src }}" type="{{ $type }}">
+    Your browser does not support the video tag.
+  </video>
+  {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end -}}
+</figure>

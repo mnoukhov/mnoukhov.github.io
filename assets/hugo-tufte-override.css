@@ -147,6 +147,17 @@ ul li {
   padding-top: 0;
 }
 
+.margin-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.margin-figure-caption {
+  display: block;
+  margin-top: 0.35rem;
+}
+
 /* Constrain the post title so it wraps earlier instead of running the
    full page width at the widest viewport. */
 .post-page .content-title,
@@ -180,4 +191,14 @@ ul li {
   .post-page dl {
     width: 85%;
   }
+}
+
+/* KaTeX renders at 1.21em by default, which makes inline math look oversized
+   next to the body text. Match inline math to the text; leave display math alone. */
+body .katex {
+  font-size: 1em;
+}
+
+body .katex-display > .katex {
+  font-size: 1.21em;
 }

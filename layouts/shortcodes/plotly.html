@@ -1,0 +1,147 @@
+{{- /* {{< plotly data="ngu/olmo3_7b_rlzero_math_accuracy" >}} -> data/ngu/olmo3_7b_rlzero_math_accuracy.json
+       Optional "blogToggle": {"labelOff": "...", "labelOn": "...", "traces": [1,3,5]} in the
+       JSON renders a pill (grey + labelOff -> green + labelOn) that toggles Plotly
+       `visible` on those traces.
+       Optional "blogAnimation": {"label": "Play", "frameDuration": 500,
+       "transitionDuration": 300} renders a pill that plays all Plotly frames.
+       Optional "blogResponsive": {"breakpoint": 480, "wide": {..relayout..}, "narrow": {..relayout..}}
+       applies one relayout patch or the other depending on the container width. */ -}}
+{{- $key := .Get "data" | default (.Get 0) -}}
+{{- $fig := hugo.Data -}}
+{{- range (split $key "/") -}}
+  {{- $fig = index $fig . -}}
+{{- end -}}
+{{- if not $fig -}}
+  {{- errorf "plotly shortcode: no data file at data/%s.json (page %s)" $key .Page.Path -}}
+{{- end -}}
+{{- $id := printf "plotly-%s-%d" (anchorize $key) .Ordinal -}}
+{{- $toggle := index $fig "blogToggle" -}}
+{{- $animation := index $fig "blogAnimation" -}}
+{{- if eq .Ordinal 1 -}}
+{{- if hugo.IsDevelopment }}
+<script src="/js/plotly-2.35.2.min.js" charset="utf-8"></script>
+{{- else }}
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+{{- end }}
+<style>
+.plotly-figure{margin:1rem 0}
+.plotly-figure .js-plotly-plot,.plotly-figure .svg-container,.plotly-figure .main-svg{max-width:100%}
+.plotly-toggle{display:flex;align-items:center;gap:.5em;width:fit-content;margin:.7rem auto 0;
+  padding:.42em .95em;font:inherit;font-size:15px;line-height:1;color:#1f2933;
+  background:#ececec;border:1.5px solid #bdbdbd;border-radius:999px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;transition:background .15s,border-color .15s,color .15s}
+.plotly-toggle .plotly-toggle-swatch{width:.85em;height:.85em;border-radius:3px;
+  background:#8c8c8c;transition:background .15s}
+.plotly-toggle[aria-pressed="true"]{background:#3f7d4f;border-color:#356b43;color:#fff}
+.plotly-toggle[aria-pressed="true"] .plotly-toggle-swatch{background:#8fd4a5}
+.plotly-toggle:focus-visible{outline:2px solid #3f7d4f;outline-offset:2px}
+</style>
+{{- end -}}
+<figure class="plotly-figure">
+  <div id="{{ $id }}" style="width:100%;"></div>
+  {{- with $toggle }}
+  <button type="button" class="plotly-toggle" id="{{ $id }}-toggle" aria-pressed="false">
+    <span class="plotly-toggle-swatch"></span><span class="plotly-toggle-label">{{ .labelOff | default .label }}</span>
+  </button>
+  {{- end }}
+  {{- with $animation }}
+  <button type="button" class="plotly-toggle plotly-play" id="{{ $id }}-play" aria-pressed="false">
+    <span class="plotly-play-icon" aria-hidden="true">▶</span><span class="plotly-play-label">{{ .label | default "Play" }}</span>
+  </button>
+  {{- end }}
+</figure>
+<script>
+(function () {
+  var fig = JSON.parse({{ $fig | jsonify }});
+  var el = document.getElementById({{ $id }});
+  var config = Object.assign(
+    {responsive: true, displaylogo: false, displayModeBar: false},
+    fig.config || {}
+  );
+  Plotly.newPlot(el, fig.data, fig.layout || {}, config).then(function (gd) {
+    if (fig.frames && fig.frames.length) { Plotly.addFrames(gd, fig.frames); }
+
+    var rp = fig.blogResponsive;
+    var mode;
+
+    // width the plot may use: its container, but never wider than the viewport
+    // (Tufte's column can overflow a phone screen; Plotly autosize would follow it)
+    var fitWidth = function () {
+      var vw = document.documentElement.clientWidth || window.innerWidth || 9999;
+      var cw = el.clientWidth || (el.parentNode && el.parentNode.clientWidth) || vw;
+      return Math.max(200, Math.min(cw, vw - 16));
+    };
+
+    var applyResponsive = function (w) {
+      if (!rp || !(rp.wide || rp.narrow)) { return; }
+      var next = w < (rp.breakpoint || 480) ? "narrow" : "wide";
+      if (next === mode) { return; }
+      mode = next;
+      if (rp[next]) { Plotly.relayout(gd, rp[next]); }
+    };
+
+    var raf;
+    var sync = function () {
+      if (raf) { cancelAnimationFrame(raf); }
+      raf = requestAnimationFrame(function () {
+        raf = 0;
+        var w = fitWidth();
+        applyResponsive(w);
+        Plotly.relayout(gd, {width: w});
+      });
+    };
+    if (window.ResizeObserver) { new ResizeObserver(sync).observe(el); }
+    else { window.addEventListener("resize", sync); }
+    window.addEventListener("resize", sync);
+    window.addEventListener("load", sync);
+    sync();
+
+    var btn = document.getElementById({{ $id }} + "-toggle");
+    if (btn && fig.blogToggle && fig.blogToggle.traces) {
+      var t = fig.blogToggle;
+      var labelEl = btn.querySelector(".plotly-toggle-label");
+      btn.addEventListener("click", function () {
+        var on = btn.getAttribute("aria-pressed") !== "true";
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        if (labelEl) { labelEl.textContent = (on ? t.labelOn : t.labelOff) || t.label || labelEl.textContent; }
+        Plotly.restyle(gd, {visible: on}, t.traces);
+      });
+    }
+
+    var playBtn = document.getElementById({{ $id }} + "-play");
+    if (playBtn && fig.blogAnimation && fig.frames && fig.frames.length) {
+      var animation = fig.blogAnimation;
+      var playing = false;
+      playBtn.addEventListener("click", function () {
+        if (playing) { return; }
+        playing = true;
+        playBtn.disabled = true;
+        playBtn.setAttribute("aria-pressed", "true");
+
+        var reset = {
+          frame: {duration: 0, redraw: true},
+          transition: {duration: 0},
+          mode: "immediate"
+        };
+        var playback = {
+          frame: {duration: animation.frameDuration || 500, redraw: true},
+          transition: {
+            duration: animation.transitionDuration || 300,
+            easing: "cubic-in-out"
+          },
+          fromcurrent: true,
+          mode: "immediate"
+        };
+
+        Promise.resolve(Plotly.animate(gd, [fig.frames[0].name], reset))
+          .then(function () { return Plotly.animate(gd, null, playback); })
+          .finally(function () {
+            playing = false;
+            playBtn.disabled = false;
+            playBtn.setAttribute("aria-pressed", "false");
+          });
+      });
+    }
+  });
+})();
+</script>

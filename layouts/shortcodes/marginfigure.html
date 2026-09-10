@@ -1,0 +1,9 @@
+{{- $id := printf "margin-figure-%d" .Ordinal -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+<label for="{{ $id }}" class="margin-toggle marginnote-ind" aria-label="Show margin figure">{{ site.Params.marginNoteInd | default "⊕" }}</label>
+<input type="checkbox" id="{{ $id }}" class="margin-toggle">
+<span class="marginnote margin-figure">
+  <img src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy">
+  {{- with .Get "caption" }}<span class="margin-figure-caption">{{ . | markdownify }}</span>{{ end -}}
+</span>
