@@ -6,8 +6,6 @@
 
 {{ define "main" }}
 <article id="main" class="post-page">
-  {{ partial "nav.html" . }}
-  <hr />
   {{ partial "content.header.html" . }}
   {{ partial "toc.html" . }}
   <section>{{ .Content }}</section>

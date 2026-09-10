@@ -2,6 +2,9 @@
 <h1 class="content-title">
 {{- .Title -}}{{- if .Draft -}}&nbsp;:: Draft{{- end -}}
 </h1>
+{{- if and .IsPage (eq .Section "posts") -}}
+<span class="content-meta post-author"><p class="author"><a href="../../">{{ .Site.Title }}</a></p></span>
+{{- end -}}
 {{- if .Params.subtitle -}}
 <p class=subtitle>{{ .Params.subtitle }}</p>
 {{- end -}}

@@ -2,6 +2,7 @@
 title: "Emergent Communication: An Introduction"
 date: 2019-08-01
 description: "An accessible introduction to emergent communication and why it matters."
+toc: true
 tags: ["emergent communication", "introduction", "multi-agent"]
 ---
 

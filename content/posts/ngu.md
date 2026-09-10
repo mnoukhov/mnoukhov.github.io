@@ -1,6 +1,6 @@
 ---
 title: "Learning to Solve Hard Problems in RL for LLMs by Never Giving Up"
-date: 2026-09-05
+date: 2026-09-10
 description: ""
 math: true
 toc: true
@@ -11,7 +11,7 @@ This is a blog post for my recent paper on RL post-training of LLMs: introducing
 
 ## What is your eval actually measuring?
 
-Every RL practitioner has no doubt seen an eval curve go up. Here is the AIME 2025 eval during our RL training of Olmo 3.1 RL-Zero{{< sidenote>}}see [Olmo 3.1 blog post](https://allenai.org/blog/olmo3) and [arxiv](https://arxiv.org/abs/2512.13961){{< /sidenote >}} 
+Every good RL practitioner has no doubt seen an eval curve go up. Here is the AIME 2025 eval during our RL training of Olmo 3.1 RL-Zero{{< sidenote>}}see [Olmo 3.1 blog post](https://allenai.org/blog/olmo3) and [arxiv](https://arxiv.org/abs/2512.13961){{< /sidenote >}} 
 
 
 
@@ -28,8 +28,9 @@ Every question that our initial, pre-RL model gets 0 for pass@32 will be labelle
 {{< plotly data="ngu/olmo3_7b_rlzero_math_accuracy_by_difficulty" >}}
 
 
+
+Averaging our AIME eval was hiding something important: the majority of our improvements are coming from the easiest problems going from somewhat solved to mostly solved. The hardest problems are barely improving, clearly visible in the per-example plot in the margin. 
 {{< marginfigure src="images/ngu/aime_per_example_solve_rate.svg" alt="Heatmap of solve rate for each AIME evaluation example across training steps, grouped by initial difficulty." >}}
-Averaging our AIME eval was hiding something important: the majority of our improvements are coming from the easiest problems going from somewhat solved to mostly solved. The hardest problems are barely improving. 
 But this is for math RL on LLMs. What about other domains?
 
 We evaluate code RL and agentic RL using [Deepcoder](https://pretty-radio-b75.notion.site/DeepCoder-A-Fully-Open-Source-14B-Coder-at-O3-mini-Level-1cf81902c14680b3bee5eb349a512a51) and [DeepSWE](https://pretty-radio-b75.notion.site/DeepSWE-Training-a-Fully-Open-sourced-State-of-the-Art-Coding-Agent-by-Scaling-RL-22281902c1468193aabbe9a8c59bbe33), two nice open-source projects that released models and logs.
@@ -125,7 +126,7 @@ If our first `$k$` completions all pass `$\frac{7}{12}$` tests, then Never Give 
 
 ## The Matthew Effect is a Primacy Bias, sort of
 
-Some *very* astute readers may have noticed that the Matthew Effect resembles a [primacy bias](https://en.wikipedia.org/wiki/Serial-position_effect) where LLMs are predisposed to solve certain problems according to their initial state. This intuitively connects the Matthew Effect to the [Primacy Bias in RL (Nikishin, Schwarzer, D'Oro et al, 2022)](https://arxiv.org/abs/2205.07802) where deep RL training runs could be derailed due to bad early samples. This was due, in part, to issues of plasticity in neural networks trained with RL.
+Some *very* astute readers may have noticed that the Matthew Effect resembles a [primacy bias](https://en.wikipedia.org/wiki/Serial-position_effect) where LLMs are predisposed to solve certain problems according to their initial state. This intuitively connects the Matthew Effect to the Primacy Bias in Deep RL{{< sidenote >}}[Nikishin, Schwarzer, D'Oro et al, (2022)](https://arxiv.org/abs/2205.07802) {{< /sidenote >}} where deep RL training runs could be derailed due to bad early samples. This was due, in part, to issues of plasticity in neural networks trained with RL.
 
 Could it be that the Matthew Effect in RL for LLMs caused by plasticity? In short, no.
 

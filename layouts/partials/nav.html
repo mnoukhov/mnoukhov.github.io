@@ -6,7 +6,11 @@
     {{ end }}
 
     {{ range $page.Site.Menus.nav }}
-      <li><a href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a></li>
+      {{ $url := .URL }}
+      {{ if and $page.IsHome (eq .Identifier "posts") }}
+        {{ $url = "./posts/" }}
+      {{ end }}
+      <li><a href="{{ $url }}">{{ .Pre }}{{ .Name }}</a></li>
     {{ end }}
 
     {{ if $page.IsHome }}
