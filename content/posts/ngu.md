@@ -134,6 +134,9 @@ We start from a post-GRPO checkpoint at 6000 steps that has been stagnant for at
 
 Both methods recover strong performance, even after spending a while on suboptimal data. This demonstrates that plasticity is not a major issue and LLMs can generally recover from early bad samples.
 
+## Limitations
+
+The intuition behind Never Give Up is that our RL training can reallocate compute by quickly filtering easy problems. So if a task leans heavily towards very difficult problems, Never Give Up will likely not be effective. NGU's sample, wait, sample more process can take longer to finish a whole group of completions as compared to sampling `$\frac{k}{1-p}$` from the start. This means your early samples will be more off-policy than necessary, which means a worse learning signal and slower learning speed. But if you already know a decent `$k$` for your data distribution, NGU can likely be effective!
 
 ## Conclusion
 
