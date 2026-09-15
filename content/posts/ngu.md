@@ -27,7 +27,7 @@ Every question that our initial, pre-RL model gets 0 for pass@32 will be labelle
 
 
 
-Averaging our AIME eval was hiding something important: the majority of our improvements are coming from the easiest problems going from somewhat solved to mostly solved. The hardest problems are barely improving, clearly visible in the per-example plot in the margin. 
+Averaging our AIME eval was hiding something important: the majority of our improvements are coming from the easiest problems going from somewhat solved to mostly solved. The hardest problems are barely improving. This is clearly visible if you look at how each example's solve rate changes over time (see plot in the margin). 
 {{< marginfigure src="images/ngu/aime_per_example_solve_rate.svg?v=titleless" alt="Heatmap of solve rate for each AIME evaluation example across training steps, grouped by initial difficulty." caption="**Accuracy of each AIME eval example over training.** We order examples by difficulty from top (initial model pass@32=0) to bottom (initial model pass@1 > 30%). The hardest examples (top rows) barely improve over training. The model mainly learns to better solve easy and medium-difficulty examples that were already reasonably-well solved. We call this discrepancy the **Matthew Effect**." >}}
 But this is for math RL on LLMs. What about other domains?
 
