@@ -94,7 +94,7 @@ If we take multiple rounds of NGU to get one correct completion, our initial `$k
 
 {{< plotly data="ngu/gsm8k_per_difficulty_eval_ngu_baseline" >}}
 
-Overall, it makes sense to use all the samples you have for your baseline, even if you're not training on them.{{< sidenote >}}This baseline + rescaling may be generally useful for async RL if there's filtering of samples for being too off-policy. {{< /sidenote >}}
+Overall, it makes sense to use all the samples you have for your GRPO baseline, even if you're not training on them.{{< sidenote >}}This baseline + rescaling may be generally useful for async RL if there's filtering of samples for being too off-policy. {{< /sidenote >}}
 
 ## NGU at a bigger scale: Math
 
