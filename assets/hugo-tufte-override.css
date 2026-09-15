@@ -191,6 +191,15 @@ ul li {
   .post-page dl {
     width: 85%;
   }
+
+  /* The theme's 1rem relative offset pushes an expanded margin note past the
+     viewport after its width and horizontal margins already total 100%. */
+  .post-page .margin-toggle:checked + .sidenote,
+  .post-page .margin-toggle:checked + .marginnote {
+    left: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* KaTeX renders at 1.21em by default, which makes inline math look oversized

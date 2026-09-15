@@ -1,9 +1,11 @@
 {{- /* {{< plotly data="ngu/olmo3_7b_rlzero_math_accuracy" >}} -> data/ngu/olmo3_7b_rlzero_math_accuracy.json
        Optional "blogToggle": {"labelOff": "...", "labelOn": "...", "traces": [1,3,5]} in the
        JSON renders a pill (grey + labelOff -> green + labelOn) that toggles Plotly
-       `visible` on those traces.
+       `visible` on those traces. Add toggle="split" to the shortcode for a fixed
+       Initial Model pill plus a pale-green gains toggle.
        Optional "blogAnimation": {"label": "Play", "frameDuration": 500,
        "transitionDuration": 300} renders a pill that plays all Plotly frames.
+       Add animation-speed="2" to the shortcode to play it at twice the configured speed.
        Optional "blogResponsive": {"breakpoint": 480, "wide": {..relayout..}, "narrow": {..relayout..}}
        applies one relayout patch or the other depending on the container width. */ -}}
 {{- $key := .Get "data" | default (.Get 0) -}}
@@ -17,15 +19,21 @@
 {{- $id := printf "plotly-%s-%d" (anchorize $key) .Ordinal -}}
 {{- $toggle := index $fig "blogToggle" -}}
 {{- $animation := index $fig "blogAnimation" -}}
-{{- if eq .Ordinal 1 -}}
+{{- $splitToggle := and $toggle (eq (.Get "toggle") "split") -}}
+{{- $animationSpeed := .Get "animation-speed" | default 1 -}}
+{{- $assetsLoaded := .Page.Store.Get "plotly-assets-loaded" -}}
+{{- if not $assetsLoaded -}}
+{{- .Page.Store.Set "plotly-assets-loaded" true -}}
 {{- if hugo.IsDevelopment }}
 <script src="/js/plotly-2.35.2.min.js" charset="utf-8"></script>
 {{- else }}
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 {{- end }}
 <style>
-.plotly-figure{margin:1rem 0}
+.plotly-figure{position:relative;margin:1rem 0}
 .plotly-figure .js-plotly-plot,.plotly-figure .svg-container,.plotly-figure .main-svg{max-width:100%}
+/* 54.5455% = 6/11: figures are max-width 55% of the column but paragraphs (and so sidenotes/marginnotes, at 50% of a paragraph) are 60%, so this is the fraction of the figure's own width that lands the caption at the same width as a sidenote */
+.plotly-figure>figcaption{position:absolute;top:var(--plotly-cap-top,0);left:120%;right:auto;float:none;width:54.5455%;max-width:54.5455%;margin-right:0;font-size:1.1rem;line-height:1.3}
 .plotly-toggle{display:flex;align-items:center;gap:.5em;width:fit-content;margin:.7rem auto 0;
   padding:.42em .95em;font:inherit;font-size:15px;line-height:1;color:#1f2933;
   background:#ececec;border:1.5px solid #bdbdbd;border-radius:999px;cursor:pointer;
@@ -35,20 +43,41 @@
 .plotly-toggle[aria-pressed="true"]{background:#3f7d4f;border-color:#356b43;color:#fff}
 .plotly-toggle[aria-pressed="true"] .plotly-toggle-swatch{background:#8fd4a5}
 .plotly-toggle:focus-visible{outline:2px solid #3f7d4f;outline-offset:2px}
+.plotly-toggle-group{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.55em;margin:.7rem auto 0}
+.plotly-toggle-group .plotly-toggle{margin:0}
+.plotly-toggle-static:disabled{opacity:1;cursor:default}
+.plotly-toggle-action{background:#e4f3e8;border-color:#8fbc9b;color:#285c37}
+.plotly-toggle-action .plotly-toggle-swatch{background:#8fd4a5}
+.plotly-play-pale-green{background:#e4f3e8;border-color:#8fbc9b;color:#285c37}
+@media screen and (max-width:760px){
+  .plotly-figure>figcaption{position:relative;top:auto;left:auto;right:auto;width:auto;max-width:none;margin-right:0}
+}
 </style>
 {{- end -}}
 <figure class="plotly-figure">
   <div id="{{ $id }}" style="width:100%;"></div>
   {{- with $toggle }}
+  {{- if $splitToggle }}
+  <div class="plotly-toggle-group">
+    <button type="button" class="plotly-toggle plotly-toggle-static" disabled>
+      <span class="plotly-toggle-swatch"></span><span>{{ .labelOff | default "Initial Model" }}</span>
+    </button>
+    <button type="button" class="plotly-toggle plotly-toggle-action" id="{{ $id }}-toggle" aria-pressed="false">
+      <span class="plotly-toggle-swatch"></span><span class="plotly-toggle-label">Show me the gains from RL!</span>
+    </button>
+  </div>
+  {{- else }}
   <button type="button" class="plotly-toggle" id="{{ $id }}-toggle" aria-pressed="false">
     <span class="plotly-toggle-swatch"></span><span class="plotly-toggle-label">{{ .labelOff | default .label }}</span>
   </button>
   {{- end }}
+  {{- end }}
   {{- with $animation }}
-  <button type="button" class="plotly-toggle plotly-play" id="{{ $id }}-play" aria-pressed="false">
+  <button type="button" class="plotly-toggle plotly-play{{ if eq ($.Get "play-style") "pale-green" }} plotly-play-pale-green{{ end }}" id="{{ $id }}-play" aria-pressed="false">
     <span class="plotly-play-icon" aria-hidden="true">▶</span><span class="plotly-play-label">{{ .label | default "Play" }}</span>
   </button>
   {{- end }}
+  {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end -}}
 </figure>
 <script>
 (function () {
@@ -60,6 +89,18 @@
   );
   Plotly.newPlot(el, fig.data, fig.layout || {}, config).then(function (gd) {
     if (fig.frames && fig.frames.length) { Plotly.addFrames(gd, fig.frames); }
+
+    var figure = el.parentNode;
+    // the plot's own top margin (reserved for its title) leaves empty space
+    // above the chart, so align the caption with where the chart visibly
+    // starts rather than with the container's top edge
+    var updateCaptionOffset = function () {
+      var ref = el.querySelector(".gtitle") || el.querySelector(".bg") || el.querySelector(".main-svg");
+      if (!ref) { return; }
+      var offset = Math.max(0, Math.round(ref.getBoundingClientRect().top - figure.getBoundingClientRect().top));
+      figure.style.setProperty("--plotly-cap-top", (offset + 8) + "px");
+    };
+    updateCaptionOffset();
 
     var rp = fig.blogResponsive;
     var mode;
@@ -87,7 +128,7 @@
         raf = 0;
         var w = fitWidth();
         applyResponsive(w);
-        Plotly.relayout(gd, {width: w});
+        Plotly.relayout(gd, {width: w}).then(updateCaptionOffset);
       });
     };
     if (window.ResizeObserver) { new ResizeObserver(sync).observe(el); }
@@ -103,7 +144,10 @@
       btn.addEventListener("click", function () {
         var on = btn.getAttribute("aria-pressed") !== "true";
         btn.setAttribute("aria-pressed", on ? "true" : "false");
-        if (labelEl) { labelEl.textContent = (on ? t.labelOn : t.labelOff) || t.label || labelEl.textContent; }
+        if (labelEl) {
+          var offLabel = {{ if $splitToggle }}"Show me the gains from RL!"{{ else }}t.labelOff{{ end }};
+          labelEl.textContent = (on ? t.labelOn : offLabel) || t.label || labelEl.textContent;
+        }
         Plotly.restyle(gd, {visible: on}, t.traces);
       });
     }
@@ -111,6 +155,7 @@
     var playBtn = document.getElementById({{ $id }} + "-play");
     if (playBtn && fig.blogAnimation && fig.frames && fig.frames.length) {
       var animation = fig.blogAnimation;
+      var animationSpeed = Number({{ $animationSpeed }}) || 1;
       var playing = false;
       playBtn.addEventListener("click", function () {
         if (playing) { return; }
@@ -124,9 +169,9 @@
           mode: "immediate"
         };
         var playback = {
-          frame: {duration: animation.frameDuration || 500, redraw: true},
+          frame: {duration: (animation.frameDuration || 500) / animationSpeed, redraw: true},
           transition: {
-            duration: animation.transitionDuration || 300,
+            duration: (animation.transitionDuration || 300) / animationSpeed,
             easing: "cubic-in-out"
           },
           fromcurrent: true,
