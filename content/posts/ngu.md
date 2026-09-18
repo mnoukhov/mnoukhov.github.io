@@ -32,7 +32,7 @@ Averaging our AIME eval was hiding something important: the majority of our impr
 But this is for math RL on LLMs. What about other domains?
 
 We evaluate code RL and agentic RL using [Deepcoder](https://pretty-radio-b75.notion.site/DeepCoder-A-Fully-Open-Source-14B-Coder-at-O3-mini-Level-1cf81902c14680b3bee5eb349a512a51) and [DeepSWE](https://pretty-radio-b75.notion.site/DeepSWE-Training-a-Fully-Open-sourced-State-of-the-Art-Coding-Agent-by-Scaling-RL-22281902c1468193aabbe9a8c59bbe33), two nice open-source projects that released models and logs.
-We can use the initial model to split each benchmark into difficulty buckets (Deepseek-R1-Distilled-Qwen-14B on LCBv6) or we can use existing task length/difficulty labels (SWEBench).
+We can use the initial model to split each benchmark into difficulty buckets (Deepseek-R1-Distilled-Qwen-14B on LCBv5) or we can use existing task length/difficulty labels (SWEBench).
 
 {{< plotly data="ngu/matthew_main" toggle="split" caption="">}}
 
@@ -101,7 +101,7 @@ Overall, it makes sense to use all the samples you have for your GRPO baseline, 
 We scale up to a bigger math RL setup: [DeepScaler](https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2) with Qwen 3 4B base.{{< sidenote >}}generally following the setup of [Li et al (2025)](https://arxiv.org/abs/2509.02534){{< /sidenote >}} On top of a strong GRPO `$k=16$` baseline, NGU further improves performance, especially on the hardest subsets of our AIME + BRUMO 2025 eval.
 
 
-{{< plotly data="ngu/deepscaler_gradnorm1_ngu_pass_at_1_improvement_by_difficulty_combined" caption="**NGU outperforms GRPO when scaling up to a realistic math task, DeepScaler.** Final evals on a combination of AIME 2025 and BRUMO 2025 math datasets after training with Qwen 3 4B base for ~120 H100 hours. As previously, the evals are split by initial model's pass@32 (i.e. difficulty) to show that NGU improves on the hardest problems." >}}
+{{< plotly data="ngu/deepscaler_gradnorm1_ngu_pass_at_1_improvement_by_difficulty_combined" caption="**NGU outperforms GRPO when scaling up to a realistic math task, DeepScaler.** Final evals on a combination of AIME 2025 and BRUMO 2025 math datasets after training with Qwen 3 4B base for ~120 H100 hours. As previously, the evals are split by initial model's pass@64 (i.e. difficulty) to show that NGU improves on the hardest problems." >}}
 
 
 The Matthew Effect still persists, but we can mitigate it; NGU helps solve harder questions without really degrading on easier ones. 
