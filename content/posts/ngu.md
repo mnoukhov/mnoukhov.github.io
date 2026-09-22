@@ -6,7 +6,7 @@ math: true
 toc: true
 tags: ["research", "post-training"]
 ---
-This is a blog post for my recent paper on RL post-training of LLMs: introducing the Matthew Effect and proposing to solve it with Never Give Up. It is presented interactively and less formally, more like how I give the talk. For a deeper, more technical dive, check out the paper on [arxiv](https://arxiv.org/abs/2609.13443) and code on [github](github.com/mnoukhov/never-give-up).
+This is a blog post for my recent paper on RL post-training of LLMs: introducing the Matthew Effect and proposing to solve it with Never Give Up. It is presented interactively and less formally, more like how I give the talk. For a deeper, more technical dive, check out the paper on [arxiv](https://arxiv.org/abs/2609.13443) and code on [github](https://github.com/mnoukhov/never-give-up).
 
 ## What is your eval actually measuring?
 
