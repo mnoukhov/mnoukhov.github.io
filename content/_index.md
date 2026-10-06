@@ -133,6 +133,8 @@ My research goal is to learn how to use language efficiently and effectively for
   Implemented statistical machine learning for pattern detection and classification, optimizing classification effectiveness and inference speed
 
 ## Talks
+- [**Never Give Up**]()
+    - Mila RL Sofa RG <span class="talk-date">Oct 2026</span>
 
 - [**Discrete Latent Code**](https://www.youtube.com/watch?v=SASq_cteI6s)
     - Interview with SAIL at NeurIPS <span class="talk-date">Dec 2025</span>
