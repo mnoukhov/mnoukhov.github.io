@@ -1,0 +1,10 @@
+{{- /* The collapsible TOC above the text; on wide screens it is hidden in
+       favour of the left-margin rail from toc-rail.html */ -}}
+{{ if .Params.toc }}
+<section class="toc-inline">
+  <details closed class="toc">
+    <summary>Table of Contents</summary>
+    {{ .TableOfContents }}
+  </details>
+</section>
+{{ end }}

@@ -176,20 +176,83 @@ ul li {
   width: 60%;
 }
 
+@media (min-width: 761px) {
+  /* Keep the wider reading column without letting the accompanying notes
+     grow beyond a compact measure. Preserve the theme's 10% gap. */
+  .post-page .sidenote,
+  .post-page .marginnote {
+    width: min(50%, 18rem);
+    margin-right: calc(-10% - min(50%, 18rem));
+  }
+
+  .post-page .plotly-figure > figcaption {
+    width: min(54.5455%, 18rem);
+    max-width: min(54.5455%, 18rem);
+  }
+}
+
 @media (max-width: 760px) {
+  /* Use one consistent gutter instead of stacking the theme's body padding
+     with narrower content columns on phones. */
+  body.blog-page,
+  body:has(.home-page) {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  .home-page > section > :is(p, ul, ol, dl),
+  .home-page h2,
+  .home-page h3,
+  .home-page hr,
+  .home-page footer {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .blog-page article {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .blog-page h1 {
+    margin-top: 1.5rem;
+  }
+
+  .blog-page h2,
+  .blog-page h3,
+  .blog-page hr,
+  .blog-page .list-page-posts ul,
   .post-page .content-title,
   .post-page .subtitle,
   .post-page .byline,
   .post-page p,
   .post-page footer,
   .post-page blockquote p {
-    width: 90%;
+    width: 100%;
   }
 
   .post-page ol,
   .post-page ul,
   .post-page dl {
-    width: 85%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .post-page figure,
+  .post-page .fullwidth {
+    max-width: 100%;
+  }
+
+  .post-page .highlight {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .post-page pre.code,
+  .post-page .video,
+  .post-page div.table-wrapper {
+    width: 100%;
   }
 
   /* The theme's 1rem relative offset pushes an expanded margin note past the
@@ -210,4 +273,158 @@ body .katex {
 
 body .katex-display > .katex {
   font-size: 1.21em;
+}
+
+/* Balance the three desktop columns as one centered composition. Keep the
+   article measure and both gaps stable rather than deriving them from the
+   remaining viewport width. Narrower screens keep the collapsible TOC. */
+.toc-rail {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  body:has(.toc-rail, .home-page, .list-page-posts) {
+    --post-toc-width: 170px;
+    --post-prose-width: 720px;
+    --post-note-width: 240px;
+    /* Grow the gaps from 40px at 1280px to 64px at laptop width. */
+    --post-column-gap: clamp(40px, calc(15vw - 152px), 64px);
+    width: calc(var(--post-toc-width) + var(--post-prose-width) + var(--post-note-width) + 2 * var(--post-column-gap));
+    max-width: calc(100% - 48px);
+    padding-left: calc(var(--post-toc-width) + var(--post-column-gap));
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+
+  /* The index and About page share the article's main column, even though
+     they do not have a contents rail or margin notes. */
+  .home-page > section,
+  .home-page > .brand,
+  .home-page > footer,
+  article:has(.list-page-posts) > .brand,
+  .list-page-posts {
+    width: var(--post-prose-width);
+    max-width: 100%;
+  }
+
+  .home-page > section > :is(p, ul, ol, dl),
+  .list-page-posts ul {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .list-page-posts ul {
+    margin-left: 0;
+  }
+
+  .post-page:has(.toc-rail) :where(.content-title, .subtitle, .byline, h2, h3, p, footer, ol, ul, dl) {
+    width: var(--post-prose-width);
+  }
+
+  .post-page:has(.toc-rail) :is(ol, ul, dl) {
+    box-sizing: border-box;
+  }
+
+  .post-page:has(.toc-rail) blockquote {
+    width: var(--post-prose-width);
+    margin-inline: 0;
+    padding-inline: 2rem;
+    box-sizing: border-box;
+  }
+
+  .post-page:has(.toc-rail) :is(li, blockquote) :is(p, footer, ol, ul, dl) {
+    width: 100%;
+  }
+
+  .post-page:has(.toc-rail) :is(figure, .highlight, pre.code, .video, hr) {
+    width: var(--post-prose-width);
+    max-width: var(--post-prose-width);
+  }
+
+  .post-page:has(.toc-rail) .highlight {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .post-page:has(.toc-rail) :is(.sidenote, .marginnote) {
+    width: var(--post-note-width);
+    margin-right: calc(-1 * (var(--post-note-width) + var(--post-column-gap)));
+  }
+
+  .post-page:has(.toc-rail) .plotly-figure > figcaption {
+    left: calc(100% + var(--post-column-gap));
+    width: var(--post-note-width);
+    max-width: var(--post-note-width);
+  }
+
+  .post-page:has(.toc-rail) figure.fullwidth,
+  .post-page:has(.toc-rail) .fullwidth {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .post-page .toc-inline {
+    display: none;
+  }
+
+  .post-page .post-content {
+    position: relative;
+  }
+
+  .toc-rail {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    margin-right: var(--post-column-gap);
+    width: var(--post-toc-width);
+  }
+
+  .toc-rail nav {
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .post-page .toc-rail ul {
+    list-style: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    -webkit-padding-start: 0;
+    -webkit-padding-end: 0;
+  }
+
+  .post-page .toc-rail ul ul {
+    padding-left: 0.9em;
+  }
+
+  .toc-rail li {
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.45;
+  }
+
+  .toc-rail a {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .toc-rail a:link,
+  .toc-rail a:visited {
+    color: #888880;
+    text-decoration: none;
+    background: none;
+    text-shadow: none;
+    transition: color 0.15s;
+  }
+
+  .toc-rail a:hover,
+  .toc-rail a.active {
+    color: #4a4a45;
+  }
 }

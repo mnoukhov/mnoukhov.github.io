@@ -10,7 +10,7 @@
 {{- end -}}
 
 {{- if and .IsPage (eq .Section "posts") (not .Params.hidedate) -}}
-<p class="byline">{{ .Date.Format "Jan 2, 2006" }}</p>
+<p class="byline">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</p>
 {{- end -}}
 
 {{- if and (.IsPage) (.Params.meta) -}}

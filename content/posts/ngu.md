@@ -8,7 +8,10 @@ tags: ["research", "post-training"]
 ---
 This is a blog post for my recent paper on RL post-training of LLMs: introducing the Matthew Effect and proposing to solve it with Never Give Up. It is presented interactively and less formally, more like how I give the talk. For a deeper, more technical dive, check out the paper on [arxiv](https://arxiv.org/abs/2609.13443) and code on [github](https://github.com/mnoukhov/never-give-up).
 
-## What is your eval actually measuring?
+
+## The Matthew Effect
+
+### What is your eval actually measuring?
 
 Every good RL practitioner has no doubt seen an eval curve go up. Here is the AIME 2025 eval during our RL training of Olmo 3.1 RL-Zero Math{{< sidenote>}}see [Olmo 3.1 blog post](https://allenai.org/blog/olmo3) and [arxiv](https://arxiv.org/abs/2512.13961){{< /sidenote >}} 
 
@@ -44,7 +47,7 @@ We therefore propose **The Matthew Effect in RL for LLMs**
 RL improves performance on a task in proportion to a model’s initial competence—making easy tasks easier while hard tasks often remain difficult.
 {{< /blockquote >}}
 
-## What causes the Matthew Effect?
+### What causes the Matthew Effect?
 
 You might assume the issue has to do with GRPO. If we just don't get a correct answer to our problem in our `$k$` sampled completions, then we don't get any gradient and can't improve on this problem.{{< sidenote>}}[Xiong et al (2025)](http://arxiv.org/abs/2510.04996) call this *signal loss*{{< /sidenote >}} One possible answer is to sample more completions i.e. larger `$k$`.{{< sidenote >}}Other approaches include using [priveleged information](https://arxiv.org/abs/2410.05434) and [curriculum learning](http://arxiv.org/abs/2506.02177). These are generally complimentary to our approach.{{< /sidenote >}}
 
@@ -81,7 +84,7 @@ It does this by achieving the best of large `$k$` early in training and small `$
 {{< plotly data="ngu/gsm8k_nonzero_prompt_ratios_with_ngu" caption="**Never Give Up gets the best of both k=4 and k=32**. NGU allows `$k=4$` to keep retrying hard problems, solving them as well as `$k=32$` early in training. NGU doesn't overspend compute on easy problems, filtering them as fast as `$k=4$` late in training.">}}
 
 
-## Async RL staleness and tricks for NGU
+### Async RL staleness and tricks for NGU
 
 Astute readers might already see a downside to the method: stale completions. This section introduces two tricks for dealing with staleness, but its not necessary to the main message so feel free to skip it.
 
@@ -96,7 +99,7 @@ If we take multiple rounds of NGU to get one correct completion, our initial `$k
 
 Overall, it makes sense to use all the samples you have for your GRPO baseline, even if you're not training on them.{{< sidenote >}}This baseline + rescaling may be generally useful for async RL if there's filtering of samples for being too off-policy. {{< /sidenote >}}
 
-## NGU at a bigger scale: Math
+### NGU at a bigger scale: Math
 
 We scale up to a bigger math RL setup: [DeepScaler](https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2) with Qwen 3 4B base.{{< sidenote >}}generally following the setup of [Li et al (2025)](https://arxiv.org/abs/2509.02534){{< /sidenote >}} On top of a strong GRPO `$k=16$` baseline, NGU further improves performance, especially on the hardest subsets of our AIME + BRUMO 2025 eval.
 
@@ -106,7 +109,7 @@ We scale up to a bigger math RL setup: [DeepScaler](https://pretty-radio-b75.not
 
 The Matthew Effect still persists, but we can mitigate it; NGU helps solve harder questions without really degrading on easier ones. 
 
-## NGU on a different scale: Code
+### NGU on a different scale: Code
 
 Code RL is fundamentally different from math because math usually has binary verifier: right or wrong. A coding problem has many *tests* and the tests can vary from easy and difficult within a single coding problem. Math problems are either easy or hard. Solving a single coding problem means solving *both* easy and hard tests.
 
@@ -126,7 +129,9 @@ If our first `$k$` completions all pass `$\frac{7}{12}$` tests, then Never Give 
 
 Some *very* astute readers may have noticed that the Matthew Effect resembles a [primacy bias](https://en.wikipedia.org/wiki/Serial-position_effect) where LLMs are predisposed to solve certain problems according to their initial state. This intuitively connects the Matthew Effect to the Primacy Bias in Deep RL{{< sidenote >}}[Nikishin, Schwarzer, D'Oro et al, (2022)](https://arxiv.org/abs/2205.07802) {{< /sidenote >}} where deep RL training runs could be derailed due to bad early samples. This was due, in part, to issues of plasticity in neural networks trained with RL.
 
-Could it be that the Matthew Effect in RL for LLMs caused by plasticity? In short, no.
+Could it be that the Matthew Effect in RL for LLMs caused by plasticity? 
+
+In short, no.
 
 We start from a post-GRPO checkpoint at 6000 steps that has been stagnant for at least 3000 of those steps. We can then either train with a single reward for passing all tests (*all-tests*){{< sidenote >}}This was how [Sun et al (2025)](http://arxiv.org/abs/2509.21016) originally got around the issue of stagnation on Manufactoria.{{< /sidenote >}} or keep our per-test reward and just add NGU (*per-test NGU*).
 

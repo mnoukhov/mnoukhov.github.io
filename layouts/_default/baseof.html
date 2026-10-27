@@ -2,7 +2,7 @@
 <html lang="{{ .Site.Language.Locale }}">
 {{- partial "header.html" . -}}
 
-<body>
+<body{{ if eq .Section "posts" }} class="blog-page"{{ end }}>
 
 {{ block "main" . }}{{ end }}
 

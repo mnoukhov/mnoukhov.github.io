@@ -13,3 +13,5 @@ node_modules
 
 # Temporary lock file while building
 .hugo_build.lock
+
+static/js/plotly*.js

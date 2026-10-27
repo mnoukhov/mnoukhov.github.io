@@ -18,7 +18,7 @@ My research goal is to learn how to use language efficiently and effectively for
     <span class="muted"> under review </span>
 - **[Learning Robust Social Strategies with Large Language Models](https://arxiv.org/abs/2511.19405)** 
     <span class="muted">D Piche, M Muqeeth, M Aghajohari, J Duque, <em>M Noukhovitch</em>, A Courville</span>
-    <span class="muted">under review</span>
+    <span class="muted">TMLR 2026</span>
 - **[Gradient Regularization Prevents Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards](https://arxiv.org/abs/2602.18037)**
     <span class="muted">J Ackermann, <em>M Noukhovitch</em>, T Ishida, M Sugiyama</span>
     <span class="muted"> ICML 2026 </span>

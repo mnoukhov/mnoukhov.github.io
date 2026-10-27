@@ -1,0 +1,30 @@
+{{- /* Table of contents in the left margin on wide screens, sticking beside the
+       text as you scroll; the script marks the section being read as .active */ -}}
+{{ if .Params.toc }}
+<aside class="toc-rail" aria-label="Contents">
+  {{ .TableOfContents }}
+</aside>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var rail = document.querySelector(".toc-rail");
+  var links = Array.prototype.slice.call(rail.querySelectorAll('a[href^="#"]'));
+  var heads = links.map(function (a) {
+    return document.getElementById(decodeURIComponent(a.hash.slice(1)));
+  });
+  var queued = false;
+  // the current section is the last heading above the top third of the screen
+  var update = function () {
+    queued = false;
+    var cur = -1;
+    heads.forEach(function (h, i) {
+      if (h && h.getBoundingClientRect().top < window.innerHeight * 0.35) { cur = i; }
+    });
+    links.forEach(function (a, i) { a.classList.toggle("active", i === cur); });
+  };
+  window.addEventListener("scroll", function () {
+    if (!queued) { queued = true; requestAnimationFrame(update); }
+  }, {passive: true});
+  update();
+});
+</script>
+{{ end }}

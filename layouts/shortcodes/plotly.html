@@ -34,16 +34,16 @@
 .plotly-figure .js-plotly-plot,.plotly-figure .svg-container,.plotly-figure .main-svg{max-width:100%}
 /* 54.5455% = 6/11: figures are max-width 55% of the column but paragraphs (and so sidenotes/marginnotes, at 50% of a paragraph) are 60%, so this is the fraction of the figure's own width that lands the caption at the same width as a sidenote */
 .plotly-figure>figcaption{position:absolute;top:var(--plotly-cap-top,0);left:120%;right:auto;float:none;width:54.5455%;max-width:54.5455%;margin-right:0;font-size:1.1rem;line-height:1.3}
-.plotly-toggle{display:flex;align-items:center;gap:.5em;width:fit-content;margin:.7rem auto 0;
-  padding:.42em .95em;font:inherit;font-size:15px;line-height:1;color:#1f2933;
-  background:#ececec;border:1.5px solid #bdbdbd;border-radius:999px;cursor:pointer;
+.plotly-toggle{display:flex;align-items:center;justify-content:center;gap:.5em;width:fit-content;max-width:100%;min-width:88px;min-height:44px;box-sizing:border-box;margin:16px auto 0;
+  padding:.7rem 1.1rem;font:inherit;font-size:16px;line-height:1.2;color:#1f2933;
+  background:transparent;border:1px solid #bdbdbd;border-radius:4px;cursor:pointer;
   -webkit-appearance:none;appearance:none;transition:background .15s,border-color .15s,color .15s}
-.plotly-toggle .plotly-toggle-swatch{width:.85em;height:.85em;border-radius:3px;
+.plotly-toggle .plotly-toggle-swatch{flex-shrink:0;width:.85em;height:.85em;border-radius:3px;
   background:#8c8c8c;transition:background .15s}
 .plotly-toggle[aria-pressed="true"]{background:#3f7d4f;border-color:#356b43;color:#fff}
 .plotly-toggle[aria-pressed="true"] .plotly-toggle-swatch{background:#8fd4a5}
 .plotly-toggle:focus-visible{outline:2px solid #3f7d4f;outline-offset:2px}
-.plotly-toggle-group{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.55em;margin:.7rem auto 0}
+.plotly-toggle-group{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin:16px auto 0}
 .plotly-toggle-group .plotly-toggle{margin:0}
 .plotly-toggle-static:disabled{opacity:1;cursor:default}
 .plotly-toggle-action{background:#e4f3e8;border-color:#8fbc9b;color:#285c37}
