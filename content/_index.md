@@ -13,6 +13,9 @@ My research goal is to learn how to use language efficiently and effectively for
 - **[Learning to Solve Hard Problems in RL for LLMs by Never Giving Up](https://arxiv.org/abs/2609.13443)**
     <span class="muted"><em>M Noukhovitch</em>, H Ivison, N Lambert, A Courville</span>
     <span class="muted"> under review · [Code](https://github.com/mnoukhov/never-give-up) · [Blog Post](https://mnoukhov.github.io/posts/ngu) </span>
+- **[On the Limits of Test-Time Compute for Self-Evaluation](https://arxiv.org/abs/2611.00350)**
+    <span class="muted">A Buvanesh, K Rouissi, S Yun, J Obando-Ceron, M Moss, S Lavoie, <em>M Noukhovitch</em>, L Charlin, A Courville</span>
+    <span class="muted"> under review · [Code](https://github.com/anirudhb11/scorpio) · [Blog Post](anirudhb11.github.io/blog/scorpio) </span>
 - **[Align and Filter: Improving Performance in Asynchronous On-Policy RL](https://arxiv.org/abs/2603.01365)**
     <span class="muted">H Honari, R C Castanyer, M Przystupa, <em>M Noukhovitch</em>, P S Castro, G Berseth</span>
     <span class="muted"> under review </span>
