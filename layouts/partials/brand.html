@@ -1,6 +1,10 @@
 <header class="brand">
-<h1>{{ .Site.Title}}</h1>
+{{ if and (eq .Kind "section") (eq .Section "posts") }}<h1><a class="brand-home" href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>{{ else }}<h1>{{ .Site.Title}}</h1>{{ end }}
 <p class="subtitle">{{ .Site.Params.subtitle }}</p>
+{{ if and (eq .Kind "section") (eq .Section "posts") }}
+<div class="menu blog-blurb"><p>{{ with .Description }}{{ . }}{{ end }}</p></div>
+{{ else }}
 {{ partial "nav.html" . }}
+{{ end }}
 <hr />
 </header>

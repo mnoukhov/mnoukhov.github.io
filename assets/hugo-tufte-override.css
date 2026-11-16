@@ -115,7 +115,20 @@ ul li {
 }
 
 .list-page-posts ul {
+  list-style: none;
   line-height: 2rem;
+}
+
+.list-page-posts li {
+  margin-bottom: 1rem;
+}
+
+.list-page-posts .post-description {
+  width: auto;
+  margin: 0.2rem 0 0;
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.45;
 }
 
 .list-page-posts {
@@ -427,4 +440,40 @@ body .katex-display > .katex {
   .toc-rail a.active {
     color: #4a4a45;
   }
+}
+
+/* Blog index: description text in place of the nav links, same spacing. */
+.blog-blurb p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  width: 100%;
+  margin: 0;
+}
+
+.brand h1 a.brand-home {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  text-shadow: none;
+}
+
+.brand h1 a.brand-home:hover {
+  text-decoration: underline;
+}
+
+/* The theme's .toc li line-height of 0.5rem makes wrapped TOC entries overlap
+   on narrow screens. Use a normal line-height and space entries with margins. */
+.toc-inline .toc li {
+  line-height: 1.25;
+  margin: 0.7rem 0 0 1rem;
+}
+
+/* Subsections sit tighter under their section than sections do to each other. */
+.toc-inline .toc li li {
+  margin-top: 0.25rem;
+}
+
+.toc-inline .toc ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
 }

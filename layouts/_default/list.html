@@ -12,6 +12,11 @@
       {{ range .Pages.ByDate.Reverse }}
         <li>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a> · <span class="list-date">{{ .Date.Format "Jan 2" }}</span>
+          {{ if eq $.Section "posts" }}
+            {{ with .Description }}
+              <p class="post-description">{{ . }}</p>
+            {{ end }}
+          {{ end }}
         </li>
       {{ end }}
     </ul>
