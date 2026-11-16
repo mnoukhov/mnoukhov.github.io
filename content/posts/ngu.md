@@ -1,10 +1,10 @@
 ---
 title: "Learning to Solve Hard Problems in RL for LLMs by Never Giving Up"
 date: 2026-09-15
-description: ""
 math: true
 toc: true
 tags: ["research", "post-training"]
+description: "A paper on how RL is teaching LLMs to solve the easy problems and how not giving up allows us to solve harder ones."
 ---
 This is a blog post for my recent paper on RL post-training of LLMs: introducing the Matthew Effect and proposing to solve it with Never Give Up. It is presented interactively and less formally, more like how I give the talk. For a deeper, more technical dive, check out the paper on [arxiv](https://arxiv.org/abs/2609.13443) and code on [github](https://github.com/mnoukhov/never-give-up).
 
