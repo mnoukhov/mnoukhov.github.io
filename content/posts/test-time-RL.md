@@ -1,5 +1,5 @@
 ---
-title: "Test-Time Search for RL: A Corollary to Never Give Up"
+title: "Test-Time Scaling for RL: A Corollary to Never Give Up"
 date: 2026-11-20
 description: "I reframe my last paper with a new perspective: test-time search for RL. This allows me to implement it in a new library, Miles."
 math: true
@@ -12,8 +12,8 @@ I think it takes time to understand your own paper. A year after publishing [SEM
 
 I recently released a paper on RL post-training of LLMs introducing the Matthew effect and proposing to solve it with [Never Give Up](https://mnoukhov.github.io/posts/ngu/). As with every paper, I get a lot of interesting links and feedback after releasing it. After letting it settle, I think I understand my own paper better. This post takes another look at my ideas in the paper and finds three cool new connections:
 1. The same Matthew effect, in MoEs
-2. A more general formulation of NGU as test-time search for RL
-3. A practical implementation of test-time search in an RL for LLM library, Miles
+2. A more general formulation of NGU as test-time scaling for RL
+3. A practical implementation of test-time scaling in an RL for LLM library, Miles
 
 Overall, this ended up informing how I implemented NGU in the [Miles](https://github.com/radixark/miles/) library [(PR submitted!)](TODOLINK) and even slightly changed the actual method, to better fit the framework. You don't need to have read my other blog post/paper to understand this one, but it might make things more interesting.
 
@@ -38,7 +38,7 @@ The current solution used in MoE RL seems to be just avoiding the problem altoge
 
 In RL, I focus on reducing compute on easy problems and implicitly transferring leftover compute to more difficult tasks. For MoEs, this suggests training routers and figuring out how to use less compute for frequently chosen experts. This doesn't feel like a super clear approach and it's possible that freezing the router is simply a sufficient solution. Overall, I don't have the answer here. I just think it's interesting to see there are Matthew effects across the LLM stack, and the danger of their compounding effect.
 
-## NGU as Test-Time Search for RL
+## NGU as Test-Time Scaling for RL
 
 That was a new view of the problem, now onto a view of my solution, NGU, that I think helps shape the future of RL infra. The standard approach in GRPO is to take `$K$` samples per prompt and hope one of them gets the right answer.
 
@@ -48,7 +48,7 @@ My proposed mitigation of the Matthew effect was to reduce the compute allocated
 
 {{< figure src="/images/ngu_more/ngu-resample.svg" alt="Never Give Up: the model takes K/4 samples, all wrong, so it takes K/4 more, one of which is correct" caption="NGU takes a fraction of `$K$` samples at a time, and only samples more if none are correct." >}}
 
-You know what this looks like? **Test-time search**.
+You know what this looks like? **Test-time scaling via search**.
 
 We can see GRPO's regular approach to inference as purely parallel search.
 
@@ -58,27 +58,27 @@ In contrast, *sequential* search leverages the previous result to inform future 
 
 {{< figure src="/images/ngu_more/tts-sequential.svg" alt="Sequential search: the model produces a completion, which is fed back to the model to produce the next one, for T rounds" caption="Sequential search" >}}
 
-But modern methods for test-time search are much richer. Hybrid scaling methods combine sampling multiple completions in parallel with iterative sequential refinement. For example, one can put previous failures alongside verifier feedback into the context, in order to avoid the same mistakes.
+But modern methods for test-time search are much richer. Hybrid search methods combine sampling multiple completions in parallel with iterative sequential refinement. For example, one can put previous failures alongside verifier feedback into the context, in order to avoid the same mistakes.
 
-{{< figure src="/images/ngu_more/tts-hybrid.svg" alt="Hybrid search: the model samples K completions in parallel, which are fed back to the model to sample K more" caption="Hybrid search" >}}
+{{< figure src="/images/ngu_more/tts-hybrid.svg" alt="Hybrid search: the model samples K completions in parallel, which are fed back to the model to sample K more" caption="Hybrid search, figure based on [Venkatraman et al (2025)](https://arxiv.org/abs/2509.26626)." >}}
 
 Given that we're trying to solve harder problems, it makes sense to use more advanced inference techniques. But how can we practically implement test-time methods in an already-complex RL pipeline? Next, I integrate NGU as a test-time search into a powerful open-source RL library, [Miles](https://github.com/radixark/miles).
 
-## Implementing Test-Time Search in RL
+## Implementing Test-Time Scaling in RL
 
 In implementing NGU in the Miles library, I was trying to find the right coding paradigm for both my method and extensibility for future test-time search methods. At the same time, I wanted a module that could fit into Miles' current data flow with as few changes as possible. 
 
-I figured that a fundamental part of NGU and future test-time search is how we *leverage previous (failed) completions*. Whereas NGU simply notes previous failures, future methods can explicitly use previous, failed completions to do better in future iterations.{{< sidenote >}}It turns out a version of this idea was concurrent with NGU. A one-off baseline by [Zheng et al, (2026)](https://arxiv.org/abs/2605.28751) ("online-fixing" in Appendix G) puts a previous failed attempt in the prompt alongside instructions to improve on it. It works well!{{< /sidenote >}}
+I figured that a fundamental part of NGU and future test-time scaling is how we *leverage previous (failed) completions*. Whereas NGU simply notes previous failures, future methods can explicitly use previous, failed completions to do better in future iterations.{{< sidenote >}}It turns out a version of this idea was concurrent with NGU. A one-off baseline by [Zheng et al, (2026)](https://arxiv.org/abs/2605.28751) ("online-fixing" in Appendix G) puts a previous failed attempt in the prompt alongside instructions to improve on it. It works well!{{< /sidenote >}}
 
 If our RL methods are no longer taking a fixed number of samples `$K$`, but iteratively improving and adapting, we also have to move towards a more flexible paradigm for *inference budget* `$B$`. Recently, SOTA open-source agentic evaluations have started talking not about a specific number of outputs (`pass@k`) but rather a timeout that accounts for agentic interactions.{{< sidenote >}}[MiniMax M3](https://www.minimax.io/blog/minimax-m3) eval has a 25 min timeout for LiveSQLBench whereas PostTrainBench gets 12 hours.{{< /sidenote >}}  
 
-With these two pieces, we can implement many test-time search methods as keeping track of some state, leveraging failed completions, and using up to some inference budget's worth of compute.
+With these two pieces, we can implement many test-time scaling methods as keeping track of some state, leveraging failed completions, and using up to some inference budget's worth of compute.
 
 ## NGU, now in Miles!
 
-Altogether, I implemented NGU in `Miles` by
-1. extended the existing `async_unused_samples_handler` to become a generic module for what to do with groups that were aborted, stale, all-wrong, etc.
-2. implemented `never_give_up` as a module that takes `$K$` more samples for a failed group up to some maximum budget `$B$`
+Altogether, I implemented NGU in Miles by
+1. extending the existing `async_unused_samples_handler` to become a generic module for what to do with groups that were aborted, stale, all-wrong, etc.
+2. treating `never_give_up` as an `unused_samples_handler` that takes `$K$` more samples for a failed group up to some maximum budget `$B$`
 
 This implementation leads to two important changes to NGU.
 
@@ -90,7 +90,7 @@ Despite the name, *Never Give Up*, this treats NGU as a method of *reducing* inf
 
 2. Inference budget can be completions, *or tokens*
 
-As mentioned, our budget `$B$` doesn't need to be the number of completions but can be GPU hours or even *tokens*. A token budget allows NGU to become a method for reducing *context length* instead of number of samples. For example, say a response failed to finish an answer within the initial budget of 16k response tokens. Instead of starting a new response, we can also NGU on the number of *tokens* and give the unfinished response more token budget, essentially giving a longer answer.
+As mentioned, our budget `$B$` doesn't need to be the number of completions but can be GPU hours or even *tokens*. A token budget allows NGU to become a method for reducing *context length* instead of the number of samples. For example, say a response failed to finish an answer within the initial budget of 16k response tokens. Instead of starting a new response, we can also NGU on the number of *tokens* and give the unfinished response more token budget, essentially giving a longer answer.
 
 {{< figure src="/images/ngu_more/ngu-token-extension.svg" alt="NGU with a token budget: y1 runs out of its 16k tokens before answering and the other three samples are wrong, so the model continues y1 from 16k to 32k tokens and starts three new samples y5 to y7; the extended y1 is correct" caption="NGU on tokens: a response that hits the 16k limit (...) is extended for another 16k instead of being replaced" >}}
 
@@ -104,7 +104,7 @@ You can more or less see that smaller budgets (`$K=8$`) do better early in train
 
 ## Conclusion
 
-Altogether, we have now changed from a one-off method into a generic framework enabling test-time search methods for RL. Our method, NGU, no longer increases samples but focuses on reducing a generic inference budget. It still works the same way: reduce compute on easy problems, implicitly reallocate that compute to harder problems. This direction has really only come about by getting great feedback from many people and taking the time to reflect and dig deeper on where I think RL is going. Hopefully this enables future research to implement more advanced test-time search methods and continue to solve ever harder problems. 
+Altogether, we have now changed from a one-off method into a generic framework enabling test-time scaling methods for RL. Our method, NGU, no longer increases samples but focuses on reducing a generic inference budget. It still works the same way: reduce compute on easy problems, implicitly reallocate that compute to harder problems. This direction has really only come about by getting great feedback from many people and taking the time to reflect and dig deeper on where I think RL is going. Hopefully this enables future research to implement more advanced test-time scaling methods and continue to solve ever harder problems. 
 
 ### Acknowledgements
 
@@ -114,7 +114,7 @@ Thanks to [Alex Lin Wang](https://alexwang0317.github.io/) for emailing me with 
 
 ```
 @misc{noukhovitch_test_2026,
-	title = {Test-Time Search for RL: A Corollary to Never Give Up},
+	title = {Test-Time Scaling for RL: A Corollary to Never Give Up},
 	url = {mnoukhov.github.io/posts/test-time-RL},
 	author = {Noukhovitch, Michael},
 	month = nov,
