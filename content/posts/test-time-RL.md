@@ -85,13 +85,13 @@ Altogether, I implemented NGU in Miles by
 
 This implementation leads to two important changes to NGU.
 
-### NGU as reducing budget, not increasing it
+1. NGU as reducing budget, not increasing it
 
 If we set a maximum budget `$B$`, NGU can't probabilistically decide to take more than `$B$` samples. 
 Instead, my mental model of NGU is now about iteratively generating `$K$` completions to a prompt, up to some maximum budget `$B$`. Essentially, checking every `$K$` compute if we get a correct response, and early-stopping if the prompt was easy enough.
 Despite the name, *Never Give Up*, this treats NGU as a method of *reducing* inference below some maximum compute.{{< sidenote >}}Maybe I should rename it *Give Up Early and Often*{{< /sidenote >}} 
 
-### Inference budget can be completions, *or tokens*
+2. Inference budget can be completions, *or tokens*
 
 As mentioned, our budget `$B$` doesn't need to be the number of completions but can be GPU hours or even *tokens*. A token budget allows NGU to become a method for reducing *context length* instead of the number of samples. For example, say a response failed to finish an answer within the initial budget of 16k response tokens. Instead of starting a new response, we can also NGU on the number of *tokens* and give the unfinished response more token budget, essentially giving a longer answer.
 
