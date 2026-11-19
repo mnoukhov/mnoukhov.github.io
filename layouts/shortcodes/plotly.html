@@ -87,7 +87,16 @@
     {responsive: true, displaylogo: false, displayModeBar: false},
     fig.config || {}
   );
-  Plotly.newPlot(el, fig.data, fig.layout || {}, config).then(function (gd) {
+  // static figures: no drag-to-pan/zoom, scroll zoom, or double-click reset on any axis
+  config.scrollZoom = false;
+  config.doubleClick = false;
+  var layout = fig.layout || {};
+  layout.dragmode = false;
+  ["xaxis", "yaxis"].forEach(function (k) { layout[k] = layout[k] || {}; });
+  Object.keys(layout).forEach(function (k) {
+    if (/^[xy]axis\d*$/.test(k)) { layout[k].fixedrange = true; }
+  });
+  Plotly.newPlot(el, fig.data, layout, config).then(function (gd) {
     if (fig.frames && fig.frames.length) { Plotly.addFrames(gd, fig.frames); }
 
     var figure = el.parentNode;
