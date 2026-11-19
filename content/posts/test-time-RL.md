@@ -5,6 +5,9 @@ description: "I reframe my last paper with a new perspective: test-time scaling 
 math: true
 toc: true
 tags: ["research", "post-training"]
+noindex: true
+build:
+  list: never
 ---
 {{< epigraph author="My friend Samuel Lavoie, paraphrased" >}}
 I think it takes time to understand your own paper. A year after publishing [SEM](https://arxiv.org/abs/2204.00616), I understood what it was really about.
