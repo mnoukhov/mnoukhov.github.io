@@ -1,5 +1,5 @@
 ---
-title: "Test-Time Scaling for RL: A Corrolary to Never Give Up"
+title: "Test-Time Scaling for RL: A Corollary to Never Give Up"
 date: 2026-10-20
 description: "I reframe my last paper with a new perspective: test-time search for RL. This allows me to implement it in a new library, Miles."
 math: true
@@ -44,7 +44,7 @@ That was a new view of the problem, now onto a view of my solution, NGU, that I 
 
 {{< figure src="/images/ngu_more/grpo-samples.svg" alt="GRPO sampling: a prompt goes to the model, which samples K completions, each marked correct or incorrect" caption="GRPO takes K samples per prompt, each graded right or wrong" >}}
 
-My proposed mitagation of the Matthew effect was to reduce the compute allocated to easy problems by taking fewer samples on them. Quite simply, taking a large number `$K$` samples for every prompt could be wasting inference compute on easy problems and then wasting training compute on noisy responses where `$K-1/K$` are correct. Instead, I proposed *Never Give Up*: take a fraction e.g. `$\frac{K}{4}$` and quickly filter the easy prompts. If a problem wasn't solved in the first pass, take `$\frac{K}{4}$` more samples, and so on.
+My proposed mitagation of the Matthew effect was to reduce the compute allocated to easy problems by taking fewer samples on them. Quite simply, taking a large number `$K$` samples for every prompt could be wasting inference compute on easy problems and then wasting training compute on noisy responses where `$\frac{K-1}{K}$` are correct. Instead, I proposed *Never Give Up*: take a fraction e.g. `$\frac{K}{4}$` and quickly filter the easy prompts. If a problem wasn't solved in the first pass, take `$\frac{K}{4}$` more samples, and so on.
 
 {{< figure src="/images/ngu_more/ngu-resample.svg" alt="Never Give Up: the model takes K/4 samples, all wrong, so it takes K/4 more, one of which is correct" caption="NGU takes a fraction of `$K$` samples at a time, and only samples more if none are correct." >}}
 
@@ -96,7 +96,7 @@ As mentioned, our budget `$B$` doesn't need to be the number of completions but 
 
 ### Verifying on an RL Benchmark
 
-To double-check this all works, I re-run my previous RL on Math experiment that still use a sample budget, now in Miles. As NGU is now a method to reduce budget, I compare to GRPO baselines with different inference budgets always using `$N=16$` prompts but varying the number of completions `$K \in {8,16,32}$`. In contrast, NGU uses `$N=16$` and `$K=8 \to 32$` taking 8 samples up to a budget of 32.
+To double-check this all works, I re-run my previous RL on Math experiment that still use a sample budget, now in Miles. As NGU is now a method to reduce budget, I compare to GRPO baselines with different inference budgets always using `$N=16$` prompts but varying the number of completions `$K \in \{8,16,32\}$`. In contrast, NGU uses `$N=16$` and `$K=8 \to 32$` taking 8 samples up to a budget of 32.
 
 {{< plotly data="ngu_more/aime_vs_compute" caption="Qwen 3 4B-base RL on 10k subset of Deepscaler for up to 1000 steps or 100 B300 hours" >}}
 
@@ -114,7 +114,7 @@ Thanks to [Alex Lin Wang](https://alexwang0317.github.io/) for emailing me with 
 
 ```
 @misc{noukhovitch_test_2026,
-	title = {Test-Time Scaling for RL: A Corrolary to Never Give Up},
+	title = {Test-Time Scaling for RL: A Corollary to Never Give Up},
 	url = {mnoukhov.github.io/posts/test-time-RL},
 	author = {Noukhovitch, Michael},
 	month = nov,
