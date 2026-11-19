@@ -1,6 +1,6 @@
 ---
-title: "Test-Time Scaling for RL: A Corollary to Never Give Up"
-date: 2026-10-20
+title: "Test-Time Search for RL: A Corollary to Never Give Up"
+date: 2026-11-20
 description: "I reframe my last paper with a new perspective: test-time search for RL. This allows me to implement it in a new library, Miles."
 math: true
 toc: true
@@ -28,7 +28,7 @@ After publication, I found the Matthew effect has been previously noticed in sub
 [In MoEs] you get this sort of *rich get richer* effect where experts that are chosen get strong weights. Strong weights mean that they're selected more often and they run away.
 {{< /blockquote >}}
 
-Training MoEs, in general, seems to suffer from a Matthew effect of its own. In RL for LLMs, easy problems are more likely to get signal and allow for improvement. In MoEs it is likely experts that are chosen and get signal.
+Training MoEs, in general, seems to suffer from a Matthew effect of its own. In RL for LLMs, easy problems are more likely to get signal and allow for improvement. In MoEs, it is the already-likely experts that are routed to and get reinforced.
 
 It's been observed that this is even more pronounced when training MoEs with RL. MiMo-V2.6-Pro's open RL run{{< sidenote >}}MiMo [live-streamed](https://mimo.xiaomi.com/rl/) their RL training openly showing metrics, cost, and performance. It was both a great demonstration of open science and something akin to [a live sporting event](https://x.com/srush_nlp/status/2100427133440950536?s=20) for the ML community. {{< /sidenote >}} on a 1T / 42B-active model shows that training the MoE router can *load-collapse* experts leading to some experts becoming unused ("cold") while others take on much more of the load.
 
@@ -76,16 +76,16 @@ With these two pieces, we can implement many test-time search methods as keeping
 
 ## NGU, now in Miles!
 
-Altogether, I implemented NGU in `Miles` 
+Altogether, I implemented NGU in `Miles` by
 1. extended the existing `async_unused_samples_handler` to become a generic module for what to do with groups that were aborted, stale, all-wrong, etc.
 2. implemented `never_give_up` as a module that takes `$K$` more samples for a failed group up to some maximum budget `$B$`
 
-This implementation elicits two important changes to NGU.
+This implementation leads to two important changes to NGU.
 
 1. NGU as reducing budget, not increasing it
 
 If we set a maximum budget `$B$`, NGU can't probabilistically decide to take more than `$B$` samples. 
-Instead, my mental model of NGU is now about iteratively generating `$K$` completions to a prompt, up to some maximum budget `$B$`. Essentially, early-stopping every `$K$` compute if we get a correct response, indicating the prompt was easy enough.
+Instead, my mental model of NGU is now about iteratively generating `$K$` completions to a prompt, up to some maximum budget `$B$`. Essentially, checking every `$K$` compute if we get a correct response, and early-stopping if the prompt was easy enough.
 Despite the name, *Never Give Up*, this treats NGU as a method of *reducing* inference below some maximum compute.{{< sidenote >}}Maybe I should rename it *Give Up Early and Often*{{< /sidenote >}} 
 
 2. Inference budget can be completions, *or tokens*
@@ -104,7 +104,7 @@ You can more or less see that smaller budgets (`$K=8$`) do better early in train
 
 ## Conclusion
 
-Altogether, we have now changed from a one-off method into a generic framework enabling test-time search methods for RL. Our method, NGU, no longer increases samples but focuses on reducing a generic inference budget. It still works the same way: reduce compute on easy problems, implicitly relegate that compute to harder problems. This direction has really only come about by getting great feedback from many people and taking the time to reflect and dig deeper on where I think RL is going. Hopefully this enables future research to implement more advanced test-time search methods and continue to solve ever harder problems. 
+Altogether, we have now changed from a one-off method into a generic framework enabling test-time search methods for RL. Our method, NGU, no longer increases samples but focuses on reducing a generic inference budget. It still works the same way: reduce compute on easy problems, implicitly reallocate that compute to harder problems. This direction has really only come about by getting great feedback from many people and taking the time to reflect and dig deeper on where I think RL is going. Hopefully this enables future research to implement more advanced test-time search methods and continue to solve ever harder problems. 
 
 ### Acknowledgements
 
@@ -114,7 +114,7 @@ Thanks to [Alex Lin Wang](https://alexwang0317.github.io/) for emailing me with 
 
 ```
 @misc{noukhovitch_test_2026,
-	title = {Test-Time Scaling for RL: A Corollary to Never Give Up},
+	title = {Test-Time Search for RL: A Corollary to Never Give Up},
 	url = {mnoukhov.github.io/posts/test-time-RL},
 	author = {Noukhovitch, Michael},
 	month = nov,
